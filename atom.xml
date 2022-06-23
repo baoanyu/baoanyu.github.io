@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baoanyu.github.io</id>
     <title>Bay`Blog</title>
-    <updated>2022-06-23T07:03:12.218Z</updated>
+    <updated>2022-06-23T07:14:24.189Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baoanyu.github.io"/>
     <link rel="self" href="https://baoanyu.github.io/atom.xml"/>
@@ -10,6 +10,38 @@
     <logo>https://baoanyu.github.io/images/avatar.png</logo>
     <icon>https://baoanyu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, Bay`Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[往Spring容器初始化bean的方法]]></title>
+        <id>https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/</id>
+        <link href="https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/">
+        </link>
+        <updated>2022-06-23T07:04:56.000Z</updated>
+        <content type="html"><![CDATA[<p>###要实现的外部service为例子<br>
+1.原始方法(线上环境失效，本地有效)</p>
+<pre><code>@Configuration
+public class LicenseConfig {
+    @Bean
+    public LicenseServiceImpl licenseService(){
+        return new LicenseServiceImpl();
+    }
+}
+@Autowired
+    private LicenseService licenseService = SpringContextHolder.getBean(LicenseServiceImpl.class);
+    
+</code></pre>
+<p>2.改进方法(线上环境有效，本地有效)，使用最原生的方法获取</p>
+<pre><code>@Configuration
+public class LicenseConfig {
+    @Bean
+    public LicenseService licenseService(){
+        return new LicenseServiceImpl();
+    }
+}
+ApplicationContext context = new AnnotationConfigApplicationContext(LicenseConfig.class);
+    LicenseService licenseService = context.getBean(&quot;licenseService&quot;, LicenseService.class);
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[我的第一篇 Gridea]]></title>
         <id>https://baoanyu.github.io/post/hello-gridea/</id>

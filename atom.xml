@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baoanyu.github.io</id>
     <title>Bay`Blog</title>
-    <updated>2022-06-24T09:40:28.700Z</updated>
+    <updated>2022-06-28T08:21:56.561Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baoanyu.github.io"/>
     <link rel="self" href="https://baoanyu.github.io/atom.xml"/>
@@ -10,6 +10,60 @@
     <logo>https://baoanyu.github.io/images/avatar.png</logo>
     <icon>https://baoanyu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, Bay`Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[一些好用的Java工具类]]></title>
+        <id>https://baoanyu.github.io/post/yi-xie-hao-yong-de-java-gong-ju-lei/</id>
+        <link href="https://baoanyu.github.io/post/yi-xie-hao-yong-de-java-gong-ju-lei/">
+        </link>
+        <updated>2022-06-28T08:20:58.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<p><code>java.util</code>包下的<code>Collections</code>类</p>
+<p>作用场景：适用于排序(sort-reverse)，获取最大值或最小值(max-min)，转换线程安全集合(synchronizedList)，转换不可修改集合(unmodifiablexxx)，返回空集合(emptyList)</p>
+</li>
+<li>
+<p><code>CollectionUtils</code>工具类</p>
+<p>apache 的 CollectionUtils 工具类比较优先，因支持的方法比较多</p>
+<p>集合判空(isEmpty)，对两个集合进行操作(union-并集，intersection-交集)</p>
+</li>
+<li>
+<p><code>Objects</code>工具类</p>
+<p>对象判空(isNull)，获取对象HashCode(hashCode)</p>
+</li>
+<li>
+<p><code>BooleanUtils</code>工具类</p>
+<p>针对Boolean类型进行操作：转换数字toInteger，转换原始的boolean toBoolean</p>
+</li>
+<li>
+<p><code>org.apache.commons.lang3</code>包下的<code>StringUtils</code>工具类</p>
+<p>优先推荐使用<code>isBlank</code>和<code>isNotBlank</code>方法，因为它会把<code>&quot; &quot;</code>也考虑进去。</p>
+<p>使用 StringUtils 的 split 方法会返回 null</p>
+<p>判断是否是纯数字isNumeric</p>
+</li>
+<li>
+<p>Assert<code>类，它表示</code>断言类</p>
+</li>
+<li>
+<p><code>org.apache.commons.io</code>包下的<code>IOUtils</code>类 流处理类</p>
+<p>IOUtils 类的<code>write</code></p>
+<p>IOUtils 类的<code>toByteArray</code></p>
+</li>
+<li>
+<p><code>MDC</code>是<code>org.slf4j</code>包下的一个类，它的全称是 Mapped Diagnostic Context，我们可以认为它是一个线程安全的存放诊断日志的容器。</p>
+</li>
+<li>
+<p>获取对象工具类</p>
+<p>如果你想获取某个对象的所有接口，可以使用 ClassUtils 的<code>getAllInterfaces</code>方法</p>
+<p>如果你想获取某个类的包名，可以使用 ClassUtils 的<code>getPackageName</code>方法</p>
+<p>如果你想判断某个类是否内部类，可以使用 ClassUtils 的<code>isInnerClass</code>方法</p>
+</li>
+<li>
+<p>Http枚举类</p>
+<p>其实<code>org.springframework.http</code>包下的 HttpStatus 枚举，或者<code>org.apache.http</code>包下的<code>HttpStatus</code>接口，已经把常用的 http 返回码给我们定义好了，直接拿来用就可以了，真的不用再重复定义了</p>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[往Spring容器初始化bean的方法]]></title>
         <id>https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/</id>

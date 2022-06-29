@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baoanyu.github.io</id>
     <title>Bay`Blog</title>
-    <updated>2022-06-29T08:16:27.575Z</updated>
+    <updated>2022-06-29T10:37:44.394Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baoanyu.github.io"/>
     <link rel="self" href="https://baoanyu.github.io/atom.xml"/>
@@ -10,6 +10,34 @@
     <logo>https://baoanyu.github.io/images/avatar.png</logo>
     <icon>https://baoanyu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, Bay`Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[ StringBuffer和StringBuilder 的区别]]></title>
+        <id>https://baoanyu.github.io/post/stringbuffer-he-stringbuilder-de-qu-bie/</id>
+        <link href="https://baoanyu.github.io/post/stringbuffer-he-stringbuilder-de-qu-bie/">
+        </link>
+        <updated>2022-06-29T10:37:05.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<p>区别1：线程安全<br>
+StringBuffer：线程安全，StringBuilder：线程不安全。因为 StringBuffer 的所有公开方法都是 synchronized 修饰的，而 StringBuilder 并没有 synchronized 修饰。</p>
+</li>
+<li>
+<p>区别2：缓冲区</p>
+<p>StringBuffer 每次获取 toString 都会直接使用缓存区的 toStringCache 值来构造一个字符串。</p>
+<p>StringBuilder 则每次都需要复制一次字符数组，再构造一个字符串。</p>
+<p>所以， StringBuffer 对缓存区优化，不过 StringBuffer 的这个toString 方法仍然是同步的。</p>
+</li>
+<li>
+<p>区别3：性能<br>
+既然 StringBuffer 是线程安全的，它的所有公开方法都是同步的，StringBuilder 是没有对方法加锁同步的，所以毫无疑问，StringBuilder 的性能要远大于 StringBuffer。</p>
+</li>
+<li>
+<p>总结<br>
+StringBuffer 适用于用在多线程操作同一个 StringBuffer 的场景，如果是单线程场合 StringBuilder 更适合。</p>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MarkDown 基本语法]]></title>
         <id>https://baoanyu.github.io/post/markdown-ji-ben-yu-fa/</id>
@@ -59,7 +87,7 @@
 <blockquote>
 <p>alt 指的是当图片链接失效时显示的提示文字，可加可不加 title是图片的标题，当鼠标移到图片上时显示的内容，可加可不加</p>
 </blockquote>
-<figure data-type="image" tabindex="1"><img src="https://mmbiz.qpic.cn/mmbiz_jpg/wic3gC6OynIGOG7DSt4mlp7j6xpJtEtm9dchOzyzGMEgRwabjqn3DjTQhicjUiab5NvXd03Yb1sFibgXwNBI4upic5w/640?wx_fmt=jpeg&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" loading="lazy"></figure>
+<p><img src="" alt="图片" loading="lazy">   &gt; 此处暂无图片</p>
 <p>如果你想要调整图片大小，有两种方式：</p>
 <ol>
 <li>右击图片，选择缩放图片后，语法格式将变成<code>&lt;img src=&quot;Typora.assets/32.jpg&quot; alt=&quot;32&quot; style=&quot;zoom: 20%;&quot; /&gt;</code>，<code>20%</code>可自行调整</li>
@@ -79,7 +107,7 @@
 <li><code>alt</code>放置图片链接失效后的显示文字</li>
 <li><code>width</code>设置图片宽度（<code>witdh</code>和<code>height</code>只设置一个即可，等比例缩放）</li>
 </ul>
-<figure data-type="image" tabindex="2"><img src="https://mmbiz.qpic.cn/mmbiz_jpg/wic3gC6OynIGOG7DSt4mlp7j6xpJtEtm9dchOzyzGMEgRwabjqn3DjTQhicjUiab5NvXd03Yb1sFibgXwNBI4upic5w/640?wx_fmt=jpeg&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" loading="lazy"></figure>
+<p><img src="" alt="图片" loading="lazy">  &gt; 此处暂无图片</p>
 <p>你也可以通过如下代码为图片添加图注：</p>
 <pre><code>&lt;center&gt;
     &lt;img style=&quot;border-radius: 20px;&quot;
@@ -92,9 +120,7 @@
     &lt;/div&gt;
 &lt;/center&gt;
 </code></pre>
-<figure data-type="image" tabindex="3"><img src="https://mmbiz.qpic.cn/mmbiz_jpg/wic3gC6OynIGOG7DSt4mlp7j6xpJtEtm9dchOzyzGMEgRwabjqn3DjTQhicjUiab5NvXd03Yb1sFibgXwNBI4upic5w/640?wx_fmt=jpeg&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片" loading="lazy"></figure>
-<p>Hello,I'm baymax,your healthcare companion.</p>
-<p>&gt; 我使用的博客园主题不支持缩放代码，所以我选择了使用HTML的方式调整图片大小。放置上 设置圆角 的代码后我才发现，我使用的主题同样也不支持<code>border-radius</code>😩</p>
+<p><img src="" alt="图片" loading="lazy">  &gt; 此处暂无图片</p>
 <h4 id="六-超链接">六、超链接</h4>
 <p>语法格式：<code>[超链接名](超链接地址)</code></p>
 <h4 id="七-列表">七、列表</h4>

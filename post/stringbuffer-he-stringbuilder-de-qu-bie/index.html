@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>文章归档 | Bay`Blog</title>
+<title> StringBuffer和StringBuilder 的区别 | Bay`Blog</title>
 <meta name="description" content="一个小站">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -15,6 +15,12 @@
 <link rel="stylesheet" href="https://baoanyu.github.io/styles/main.css">
 
 
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
@@ -23,6 +29,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://baoanyu.github.io">Bay`Blog</a></h3>
@@ -76,76 +83,70 @@
   </div>
 </nav>
 
-    
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
+          <article class="article">
+            <h1> StringBuffer和StringBuilder 的区别</h1>
+            <p class="article-meta">
+              2022-06-29
+              
+                <a href="https://baoanyu.github.io/tag/_YGs-Rg_J/" class="badge secondary">
+                  Work
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <ul>
+<li>
+<p>区别1：线程安全<br>
+StringBuffer：线程安全，StringBuilder：线程不安全。因为 StringBuffer 的所有公开方法都是 synchronized 修饰的，而 StringBuilder 并没有 synchronized 修饰。</p>
+</li>
+<li>
+<p>区别2：缓冲区</p>
+<p>StringBuffer 每次获取 toString 都会直接使用缓存区的 toStringCache 值来构造一个字符串。</p>
+<p>StringBuilder 则每次都需要复制一次字符数组，再构造一个字符串。</p>
+<p>所以， StringBuffer 对缓存区优化，不过 StringBuffer 的这个toString 方法仍然是同步的。</p>
+</li>
+<li>
+<p>区别3：性能<br>
+既然 StringBuffer 是线程安全的，它的所有公开方法都是同步的，StringBuilder 是没有对方法加锁同步的，所以毫无疑问，StringBuilder 的性能要远大于 StringBuffer。</p>
+</li>
+<li>
+<p>总结<br>
+StringBuffer 适用于用在多线程操作同一个 StringBuffer 的场景，如果是单线程场合 StringBuilder 更适合。</p>
+</li>
+</ul>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://baoanyu.github.io/post/markdown-ji-ben-yu-fa/">
+                <h3 class="post-title">
+                  MarkDown 基本语法
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
           
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
-            
-              <h3 class="year" data-aos-delay="500">2022</h3>
-              
-                
-                  <article class="post">
-                    <a href="https://baoanyu.github.io/post/stringbuffer-he-stringbuilder-de-qu-bie/">
-                      <h4 class="post-title">
-                         StringBuffer和StringBuilder 的区别
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://baoanyu.github.io/post/markdown-ji-ben-yu-fa/">
-                      <h4 class="post-title">
-                        MarkDown 基本语法
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://baoanyu.github.io/post/yi-xie-hao-yong-de-java-gong-ju-lei/">
-                      <h4 class="post-title">
-                        一些好用的Java工具类
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/">
-                      <h4 class="post-title">
-                        往Spring容器初始化bean的方法
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://baoanyu.github.io/post/hello-gridea/">
-                      <h4 class="post-title">
-                        我的第一篇 Gridea
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-            
-          </div>
-        </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+          
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://baoanyu.github.io/images/avatar.png?v=1656499061035" class="no-responsive avatar">
@@ -216,7 +217,7 @@
     </div>
     <div class="row">
       
-        <a href="https://baoanyu.github.io/tag/_YGs-Rg_J/" class="badge warning">
+        <a href="https://baoanyu.github.io/tag/_YGs-Rg_J/" class="badge secondary">
           Work
         </a>
       
@@ -232,6 +233,8 @@
 </div>
 
 
+    </div>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 <script type="application/javascript">
@@ -241,6 +244,29 @@ AOS.init();
 hljs.initHighlightingOnLoad()
 
 </script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'd515ce026268c048b297',
+        clientSecret: '3ccc2fab73e936d1adcb0c3330ebeb12e8f21fec',
+        repo: 'baoanyu.github.io',
+        owner: 'baoanyu',
+        admin: ['baoanyu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>一些好用的Java工具类 | Bay`Blog</title>
+<title>Works | Bay`Blog</title>
 <meta name="description" content="一个小站">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -15,12 +15,6 @@
 <link rel="stylesheet" href="https://baoanyu.github.io/styles/main.css">
 
 
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
-
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
@@ -29,7 +23,6 @@
 
   </head>
   <body>
-  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://baoanyu.github.io">Bay`Blog</a></h3>
@@ -86,93 +79,88 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <article class="article">
-            <h1>一些好用的Java工具类</h1>
-            <p class="article-meta">
-              2022-06-28
-              
-                <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge success">
-                  Works
-                </a>
-              
-            </p>
-            
-            <div class="post-content">
-              <ul>
-<li>
-<p><code>java.util</code>包下的<code>Collections</code>类</p>
-<p>作用场景：适用于排序(sort-reverse)，获取最大值或最小值(max-min)，转换线程安全集合(synchronizedList)，转换不可修改集合(unmodifiablexxx)，返回空集合(emptyList)</p>
-</li>
-<li>
-<p><code>CollectionUtils</code>工具类</p>
-<p>apache 的 CollectionUtils 工具类比较优先，因支持的方法比较多</p>
-<p>集合判空(isEmpty)，对两个集合进行操作(union-并集，intersection-交集)</p>
-</li>
-<li>
-<p><code>Objects</code>工具类</p>
-<p>对象判空(isNull)，获取对象HashCode(hashCode)</p>
-</li>
-<li>
-<p><code>BooleanUtils</code>工具类</p>
-<p>针对Boolean类型进行操作：转换数字toInteger，转换原始的boolean toBoolean</p>
-</li>
-<li>
-<p><code>org.apache.commons.lang3</code>包下的<code>StringUtils</code>工具类</p>
-<p>优先推荐使用<code>isBlank</code>和<code>isNotBlank</code>方法，因为它会把<code>&quot; &quot;</code>也考虑进去。</p>
-<p>使用 StringUtils 的 split 方法会返回 null</p>
-<p>判断是否是纯数字isNumeric</p>
-</li>
-<li>
-<p>Assert<code>类，它表示</code>断言类</p>
-</li>
-<li>
-<p><code>org.apache.commons.io</code>包下的<code>IOUtils</code>类 流处理类</p>
-<p>IOUtils 类的<code>write</code></p>
-<p>IOUtils 类的<code>toByteArray</code></p>
-</li>
-<li>
-<p><code>MDC</code>是<code>org.slf4j</code>包下的一个类，它的全称是 Mapped Diagnostic Context，我们可以认为它是一个线程安全的存放诊断日志的容器。</p>
-</li>
-<li>
-<p>获取对象工具类</p>
-<p>如果你想获取某个对象的所有接口，可以使用 ClassUtils 的<code>getAllInterfaces</code>方法</p>
-<p>如果你想获取某个类的包名，可以使用 ClassUtils 的<code>getPackageName</code>方法</p>
-<p>如果你想判断某个类是否内部类，可以使用 ClassUtils 的<code>isInnerClass</code>方法</p>
-</li>
-<li>
-<p>Http枚举类</p>
-<p>其实<code>org.springframework.http</code>包下的 HttpStatus 枚举，或者<code>org.apache.http</code>包下的<code>HttpStatus</code>接口，已经把常用的 http 返回码给我们定义好了，直接拿来用就可以了，真的不用再重复定义了</p>
-</li>
-</ul>
+          <h2 class="current-tag">标签: Works</h2>
+          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://baoanyu.github.io/post/stringbuffer-he-stringbuilder-de-qu-bie/"> StringBuffer和StringBuilder 的区别</a>
+    </h2>
+    <p class="article-meta">
+      2022-06-29
+      
+        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge ">
+          Works
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://baoanyu.github.io/post/stringbuffer-he-stringbuilder-de-qu-bie/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-            </div>
-          </article>
-        </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/">
-                <h3 class="post-title">
-                  往Spring容器初始化bean的方法
-                </h3>
-              </a>
-            </div>
-          
-        </div>
-        
-          
-            <div class="paper" data-aos="fade-in">
-              <div id="gitalk-container"></div>
-            </div>
-          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://baoanyu.github.io/post/yi-xie-hao-yong-de-java-gong-ju-lei/">一些好用的Java工具类</a>
+    </h2>
+    <p class="article-meta">
+      2022-06-28
+      
+        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge secondary">
+          Works
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://baoanyu.github.io/post/yi-xie-hao-yong-de-java-gong-ju-lei/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
 
-          
-        
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/">往Spring容器初始化bean的方法</a>
+    </h2>
+    <p class="article-meta">
+      2022-06-23
+      
+        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge secondary">
+          Works
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+
+        </div>
+        <div class="row flex-edges">
+  
+  
+</div>
+
       </div>
-
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://baoanyu.github.io/images/avatar.png?v=1657785424969" class="no-responsive avatar">
@@ -243,7 +231,7 @@
     </div>
     <div class="row">
       
-        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge success">
+        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge warning">
           Works
         </a>
       
@@ -258,7 +246,6 @@
   </div>
 </div>
 
-
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -270,29 +257,6 @@ AOS.init();
 hljs.initHighlightingOnLoad()
 
 </script>
-
-
-
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-
-      var gitalk = new Gitalk({
-        clientID: 'd515ce026268c048b297',
-        clientSecret: '3ccc2fab73e936d1adcb0c3330ebeb12e8f21fec',
-        repo: 'baoanyu.github.io',
-        owner: 'baoanyu',
-        admin: ['baoanyu'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-
-      gitalk.render('gitalk-container')
-
-    </script>
-  
-
-  
 
 
 

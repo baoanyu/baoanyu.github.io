@@ -1,22 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://baoanyu.github.io</id>
-    <title>Bay`Blog</title>
-    <updated>2022-07-28T10:30:37.985Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://baoanyu.github.io"/>
-    <link rel="self" href="https://baoanyu.github.io/atom.xml"/>
-    <subtitle>一个小站</subtitle>
-    <logo>https://baoanyu.github.io/images/avatar.png</logo>
-    <icon>https://baoanyu.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2022, Bay`Blog</rights>
-    <entry>
-        <title type="html"><![CDATA[Java核心笔记（😁持续更新中~~~）]]></title>
-        <id>https://baoanyu.github.io/post/java-he-xin-bi-ji-chi-xu-geng-xin-zhong/</id>
-        <link href="https://baoanyu.github.io/post/java-he-xin-bi-ji-chi-xu-geng-xin-zhong/">
-        </link>
-        <updated>2022-07-28T10:23:02.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="多态多态polymorphism指为不同数据类型的实体提供统一的接口或使用一个单一的符号来表示多个不同的类型">多态（多态（Polymorphism）,指为不同数据类型的实体提供统一的接口，或使用一个单一的符号来表示多个不同的类型）</h4>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Java核心笔记（😁持续更新中~~~） | Bay`Blog</title>
+<meta name="description" content="一个小站">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://baoanyu.github.io/favicon.ico?v=1659004236528">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://baoanyu.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://baoanyu.github.io">Bay`Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Java核心笔记（😁持续更新中~~~）</h1>
+            <p class="article-meta">
+              2022-07-28
+              
+                <a href="https://baoanyu.github.io/tag/9BXIAAgvH/" class="badge warning">
+                  Java-becomes-god
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <h4 id="多态多态polymorphism指为不同数据类型的实体提供统一的接口或使用一个单一的符号来表示多个不同的类型">多态（多态（Polymorphism）,指为不同数据类型的实体提供统一的接口，或使用一个单一的符号来表示多个不同的类型）</h4>
 <ul>
 <li>
 <p>多态的类别（特设多态，参数多态，字类型）</p>
@@ -330,304 +412,168 @@ fileChannel.write(ByteBuffer.wrap(&quot;Box&quot;.getBytes()), 0, &quot;Second W
 </code></pre>
 <p>}<br>
 }</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ StringBuffer和StringBuilder 的区别]]></title>
-        <id>https://baoanyu.github.io/post/stringbuffer-he-stringbuilder-de-qu-bie/</id>
-        <link href="https://baoanyu.github.io/post/stringbuffer-he-stringbuilder-de-qu-bie/">
-        </link>
-        <updated>2022-06-29T10:37:05.000Z</updated>
-        <content type="html"><![CDATA[<ul>
-<li>
-<p>区别1：线程安全<br>
-StringBuffer：线程安全，StringBuilder：线程不安全。因为 StringBuffer 的所有公开方法都是 synchronized 修饰的，而 StringBuilder 并没有 synchronized 修饰。</p>
-</li>
-<li>
-<p>区别2：缓冲区</p>
-<p>StringBuffer 每次获取 toString 都会直接使用缓存区的 toStringCache 值来构造一个字符串。</p>
-<p>StringBuilder 则每次都需要复制一次字符数组，再构造一个字符串。</p>
-<p>所以， StringBuffer 对缓存区优化，不过 StringBuffer 的这个toString 方法仍然是同步的。</p>
-</li>
-<li>
-<p>区别3：性能<br>
-既然 StringBuffer 是线程安全的，它的所有公开方法都是同步的，StringBuilder 是没有对方法加锁同步的，所以毫无疑问，StringBuilder 的性能要远大于 StringBuffer。</p>
-</li>
-<li>
-<p>总结<br>
-StringBuffer 适用于用在多线程操作同一个 StringBuffer 的场景，如果是单线程场合 StringBuilder 更适合。</p>
-</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[MarkDown 基本语法]]></title>
-        <id>https://baoanyu.github.io/post/markdown-ji-ben-yu-fa/</id>
-        <link href="https://baoanyu.github.io/post/markdown-ji-ben-yu-fa/">
-        </link>
-        <updated>2022-06-29T08:06:55.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="一-标题">一、标题</h4>
-<p>语法格式：<code>#+空格+标题</code>，一个<code>#</code>是一级标题，两个<code>##</code>是两级标题，以此类推，支持六级标题</p>
-<h4 id="二-字体">二、字体</h4>
-<ul>
-<li>
-<p><strong>加粗</strong>语法格式：<code>**加粗**</code></p>
-</li>
-<li>
-<p><em>斜体</em>语法格式：<code>*斜体*</code></p>
-</li>
-<li>
-<p>***斜体加粗***语法格式：``<em><strong>斜体加粗</strong></em>`</p>
-</li>
-<li>
-<p>删除线 语法格式：<code>~~删除线~~</code></p>
-</li>
-<li>
-<p>高亮</p>
-<p>语法格式：<code>==高亮==</code></p>
-</li>
-</ul>
-<h4 id="三-引用">三、引用</h4>
-<p>语法格式：<code>&gt;+引用文字</code></p>
-<blockquote>
-<p>我是引用文字</p>
-</blockquote>
-<p>引用也可以嵌套：</p>
-<blockquote>
-<blockquote>
-<p>如加两个<code>&gt;&gt;</code></p>
-<blockquote>
-<p>三个<code>&gt;&gt;&gt;</code></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>支持无线套娃~~</p>
-<h4 id="四-分割线">四、分割线</h4>
-<p>语法格式：三个或者三个以上的 - 或者 * 都可以，如<code>***</code></p>
-<h4 id="五-图片">五、图片</h4>
-<p>语法格式：<code>![alt](图片地址 ''title'')</code></p>
-<blockquote>
-<p>alt 指的是当图片链接失效时显示的提示文字，可加可不加 title是图片的标题，当鼠标移到图片上时显示的内容，可加可不加</p>
-</blockquote>
-<p><img src="" alt="" loading="lazy">   &gt; 此处暂无图片</p>
-<p>如果你想要调整图片大小，有两种方式：</p>
-<ol>
-<li>右击图片，选择缩放图片后，语法格式将变成<code>&lt;img src=&quot;Typora.assets/32.jpg&quot; alt=&quot;32&quot; style=&quot;zoom: 20%;&quot; /&gt;</code>，<code>20%</code>可自行调整</li>
-<li>通过HTML调节，格式如下：</li>
-</ol>
-<pre><code>&lt;center&gt;
-    &lt;img style=&quot;border-radius: 20px;&quot;
-         src=&quot;Typora.assets/baymax.jpg&quot; 
-         alt=&quot;baymax&quot;
-         width=&quot;688&quot; &gt;
-&lt;/center&gt;
-</code></pre>
-<ul>
-<li><code>&lt;center&gt;</code>标签设置图片居中对齐</li>
-<li><code>border-radius</code>设置圆角</li>
-<li><code>src</code>放置图片路径（本地路径或网络路径）</li>
-<li><code>alt</code>放置图片链接失效后的显示文字</li>
-<li><code>width</code>设置图片宽度（<code>witdh</code>和<code>height</code>只设置一个即可，等比例缩放）</li>
-</ul>
-<p><img src="" alt="" loading="lazy">  &gt; 此处暂无图片</p>
-<p>你也可以通过如下代码为图片添加图注：</p>
-<pre><code>&lt;center&gt;
-    &lt;img style=&quot;border-radius: 20px;&quot;
-         src=&quot;&quot; 
-         alt=&quot;&quot;
-         width=&quot;688&quot; &gt;
-    &lt;br&gt;
-    &lt;div style=&quot;color: #999; padding: 2px;&quot;&gt;
-        图注
-    &lt;/div&gt;
-&lt;/center&gt;
-</code></pre>
-<p><img src="" alt="" loading="lazy">  &gt; 此处暂无图片</p>
-<h4 id="六-超链接">六、超链接</h4>
-<p>语法格式：<code>[超链接名](超链接地址)</code></p>
-<h4 id="七-列表">七、列表</h4>
-<ul>
-<li>无序列表</li>
-</ul>
-<p>语法格式：无序列表用 - + * 任何一种都可以，如<code>+ 我是无序列表</code></p>
-<blockquote>
-<p>加号和内容之间需要放置一个空格</p>
-</blockquote>
-<ul>
-<li>有序列表</li>
-</ul>
-<p>语法格式：<code>数字+点+空格+内容</code>，如<code>1. 我是有序列表</code></p>
-<ul>
-<li>子列表</li>
-</ul>
-<p>在子列表前按下tab键即可构成子列表。</p>
-<h4 id="八-表格">八、表格</h4>
-<p>语法格式：</p>
-<pre><code>|  表头   | 表头  |
-|  ----  | ----  |
-| 单元格  | 单元格 |
-| 单元格  | 单元格 |
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>第二行分割表头和内容，并声明内容的对齐格式。一般而言，不这么用，感觉太费劲了，下面再介绍快捷键。</p>
-</blockquote>
-<h4 id="九-代码">九、代码</h4>
-<ul>
-<li>行内代码</li>
-</ul>
-<p>语法格式：用一个反引号包起来 <code>代码内容</code>，代码会以主题中设置的样式出现在行内，但不会实现代码高亮。</p>
-<ul>
-<li>多行代码</li>
-</ul>
-<p>语法格式：代码之间分别用三个反引号包起来，且两边的反引号单独占一行</p>
-<blockquote>
-<p>``` 语言 代码内容 ```</p>
-<p>语言：C、C++、JAVA 等</p>
-</blockquote>
-<h4 id="十-高级技巧">十、高级技巧</h4>
-<ol>
-<li>转义</li>
-</ol>
-<p>Markdown 使用了很多特殊符号来表示特定的意义，如果需要显示特定的符号则需要使用转义字符，Markdown 使用反斜杠转义特殊字符：</p>
-<pre><code>\   反斜线
-`   反引号
-*   星号
-_   下划线
-{}  花括号
-[]  方括号
-()  小括号
-#   井字号
-+   加号
--   减号
-.   英文句点
-!   感叹号
-</code></pre>
-<ol>
-<li>行内公式（inline）用 <code>$...$</code> 括起公式，公式会出现在行内。</li>
-<li>块间公式（display）用 <code>$$...$$</code> 括起公式（注意 <code>$$</code> 后需要换行），公式会默认显示在行中间。</li>
-</ol>
-<pre><code>$$
-	块间公式
-$$
-</code></pre>
-<ol>
-<li>支持HTML</li>
-</ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[一些好用的Java工具类]]></title>
-        <id>https://baoanyu.github.io/post/yi-xie-hao-yong-de-java-gong-ju-lei/</id>
-        <link href="https://baoanyu.github.io/post/yi-xie-hao-yong-de-java-gong-ju-lei/">
-        </link>
-        <updated>2022-06-28T08:20:58.000Z</updated>
-        <content type="html"><![CDATA[<ul>
-<li>
-<p><code>java.util</code>包下的<code>Collections</code>类</p>
-<p>作用场景：适用于排序(sort-reverse)，获取最大值或最小值(max-min)，转换线程安全集合(synchronizedList)，转换不可修改集合(unmodifiablexxx)，返回空集合(emptyList)</p>
-</li>
-<li>
-<p><code>CollectionUtils</code>工具类</p>
-<p>apache 的 CollectionUtils 工具类比较优先，因支持的方法比较多</p>
-<p>集合判空(isEmpty)，对两个集合进行操作(union-并集，intersection-交集)</p>
-</li>
-<li>
-<p><code>Objects</code>工具类</p>
-<p>对象判空(isNull)，获取对象HashCode(hashCode)</p>
-</li>
-<li>
-<p><code>BooleanUtils</code>工具类</p>
-<p>针对Boolean类型进行操作：转换数字toInteger，转换原始的boolean toBoolean</p>
-</li>
-<li>
-<p><code>org.apache.commons.lang3</code>包下的<code>StringUtils</code>工具类</p>
-<p>优先推荐使用<code>isBlank</code>和<code>isNotBlank</code>方法，因为它会把<code>&quot; &quot;</code>也考虑进去。</p>
-<p>使用 StringUtils 的 split 方法会返回 null</p>
-<p>判断是否是纯数字isNumeric</p>
-</li>
-<li>
-<p>Assert<code>类，它表示</code>断言类</p>
-</li>
-<li>
-<p><code>org.apache.commons.io</code>包下的<code>IOUtils</code>类 流处理类</p>
-<p>IOUtils 类的<code>write</code></p>
-<p>IOUtils 类的<code>toByteArray</code></p>
-</li>
-<li>
-<p><code>MDC</code>是<code>org.slf4j</code>包下的一个类，它的全称是 Mapped Diagnostic Context，我们可以认为它是一个线程安全的存放诊断日志的容器。</p>
-</li>
-<li>
-<p>获取对象工具类</p>
-<p>如果你想获取某个对象的所有接口，可以使用 ClassUtils 的<code>getAllInterfaces</code>方法</p>
-<p>如果你想获取某个类的包名，可以使用 ClassUtils 的<code>getPackageName</code>方法</p>
-<p>如果你想判断某个类是否内部类，可以使用 ClassUtils 的<code>isInnerClass</code>方法</p>
-</li>
-<li>
-<p>Http枚举类</p>
-<p>其实<code>org.springframework.http</code>包下的 HttpStatus 枚举，或者<code>org.apache.http</code>包下的<code>HttpStatus</code>接口，已经把常用的 http 返回码给我们定义好了，直接拿来用就可以了，真的不用再重复定义了</p>
-</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[往Spring容器初始化bean的方法]]></title>
-        <id>https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/</id>
-        <link href="https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/">
-        </link>
-        <updated>2022-06-23T07:04:56.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="要实现的外部service为例子">要实现的外部service为例子</h3>
-<p>1.原始方法(线上环境失效，本地有效)</p>
-<pre><code class="language-java">@Configuration
-public class LicenseConfig {
-    @Bean
-    public LicenseServiceImpl licenseService(){
-        return new LicenseServiceImpl();
-    }
-}
-@Autowired
-    private LicenseService licenseService = SpringContextHolder.getBean(LicenseServiceImpl.class);
-    
-</code></pre>
-<p>2.改进方法(线上环境有效，本地有效)，使用最原生的方法获取</p>
-<pre><code class="language-java">@Configuration
-public class LicenseConfig {
-    @Bean
-    public LicenseService licenseService(){
-        return new LicenseServiceImpl();
-    }
-}
-ApplicationContext context = new AnnotationConfigApplicationContext(LicenseConfig.class);
-    LicenseService licenseService = context.getBean(&quot;licenseService&quot;, LicenseService.class);
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[我的第一篇 Gridea]]></title>
-        <id>https://baoanyu.github.io/post/hello-gridea/</id>
-        <link href="https://baoanyu.github.io/post/hello-gridea/">
-        </link>
-        <updated>2022-06-23T05:37:30.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="2020">2020</h3>
-<p><a href="https://baoanyu.github.io">Github</a><br>
-😘 Enjoy~</p>
-]]></content>
-    </entry>
-</feed>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://baoanyu.github.io/post/stringbuffer-he-stringbuilder-de-qu-bie/">
+                <h3 class="post-title">
+                   StringBuffer和StringBuilder 的区别
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://baoanyu.github.io/images/avatar.png?v=1659004236528" class="no-responsive avatar">
+    <div class="text-muted">一个小站</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/java-he-xin-bi-ji-chi-xu-geng-xin-zhong/">Java核心笔记（😁持续更新中~~~）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/stringbuffer-he-stringbuilder-de-qu-bie/"> StringBuffer和StringBuilder 的区别</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/markdown-ji-ben-yu-fa/">MarkDown 基本语法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/yi-xie-hao-yong-de-java-gong-ju-lei/">一些好用的Java工具类</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/">往Spring容器初始化bean的方法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/about/">关于</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/hello-gridea/">我的第一篇 Gridea</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://baoanyu.github.io/tag/9BXIAAgvH/" class="badge warning">
+          Java-becomes-god
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge secondary">
+          Works
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/9mHQnnpkI/" class="badge secondary">
+          Other
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://baoanyu.github.io/" target="_blank">GitHub</a> | <a class="rss" href="https://baoanyu.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'd515ce026268c048b297',
+        clientSecret: '3ccc2fab73e936d1adcb0c3330ebeb12e8f21fec',
+        repo: 'baoanyu.github.io',
+        owner: 'baoanyu',
+        admin: ['baoanyu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

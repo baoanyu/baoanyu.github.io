@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baoanyu.github.io</id>
     <title>Bay`Blog</title>
-    <updated>2022-07-28T10:38:34.733Z</updated>
+    <updated>2022-09-15T08:13:45.057Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baoanyu.github.io"/>
     <link rel="self" href="https://baoanyu.github.io/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://baoanyu.github.io/images/avatar.png</logo>
     <icon>https://baoanyu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, Bay`Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Git拉取代码，本地有更新冲突怎么办]]></title>
+        <id>https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/</id>
+        <link href="https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/">
+        </link>
+        <updated>2022-09-15T06:51:05.000Z</updated>
+        <content type="html"><![CDATA[<p>1.使用命令隐藏本地更改</p>
+<p>git  stash</p>
+<p>2.拉取远程代码</p>
+<p>git pull</p>
+<p>3.恢复更新本地更改的代码</p>
+<p>git stash pop</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Java核心笔记（😁持续更新中~~~）]]></title>
         <id>https://baoanyu.github.io/post/java-he-xin-bi-ji-chi-xu-geng-xin-zhong/</id>

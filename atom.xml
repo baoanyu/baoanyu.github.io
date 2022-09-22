@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baoanyu.github.io</id>
     <title>Bay`Blog</title>
-    <updated>2022-09-22T09:49:45.039Z</updated>
+    <updated>2022-09-22T09:54:28.838Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baoanyu.github.io"/>
     <link rel="self" href="https://baoanyu.github.io/atom.xml"/>
@@ -17,6 +17,13 @@
         </link>
         <updated>2022-09-22T09:47:58.000Z</updated>
         <content type="html"><![CDATA[<h1 id="docker常用命令">Docker常用命令</h1>
+<!-- 工作常用查看运行的java容器的日志 -->
+<p>查看日志</p>
+<h1 id="docker-ps-a">docker ps -a</h1>
+<p>docker logs container_Id<br>
+复制代码<br>
+占用资源</p>
+<p>docker stats name</p>
 <p><strong>docker 常用基础命令总结</strong></p>
 <ul>
 <li>启动docker</li>

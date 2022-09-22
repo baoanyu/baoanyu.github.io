@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Git拉取代码，本地有更新冲突怎么办 | Bay`Blog</title>
+<title>Docker常用命令 | Bay`Blog</title>
 <meta name="description" content="一个小站">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -87,23 +87,143 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>Git拉取代码，本地有更新冲突怎么办</h1>
+            <h1>Docker常用命令</h1>
             <p class="article-meta">
-              2022-09-15
+              2022-09-22
               
-                <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge secondary">
+                <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge ">
                   Works
                 </a>
               
             </p>
             
             <div class="post-content">
-              <p>1.使用命令隐藏本地更改</p>
-<p>git  stash</p>
-<p>2.拉取远程代码</p>
-<p>git pull</p>
-<p>3.恢复更新本地更改的代码</p>
-<p>git stash pop</p>
+              <h1 id="docker常用命令">Docker常用命令</h1>
+<p><strong>docker 常用基础命令总结</strong></p>
+<ul>
+<li>启动docker</li>
+</ul>
+<p>​		systemctl start docker</p>
+<ul>
+<li>停止dokcer</li>
+</ul>
+<p>​		systemctl stop docker</p>
+<ul>
+<li>查看docker状态</li>
+</ul>
+<p>​		systemctl status docker</p>
+<ul>
+<li>重启docker</li>
+</ul>
+<p>​		systemctl restart docker</p>
+<ul>
+<li>设置docker 开机自启</li>
+</ul>
+<p>​		systemctl enable docker</p>
+<ul>
+<li>查看docker 版本</li>
+</ul>
+<p>​		docker version</p>
+<ul>
+<li>查看docker 镜像</li>
+</ul>
+<p>​		docker images</p>
+<ul>
+<li>查看docker 运行列表</li>
+</ul>
+<p>​		docker ps</p>
+<ul>
+<li>查看docker （运行、停止）</li>
+</ul>
+<p>​		docker ps -aq</p>
+<ul>
+<li>删除容器</li>
+</ul>
+<p>​		docker rm -f 容器ID/容器名称(CONTAINER ID/NAMES)</p>
+<ul>
+<li>删除多个容器（空格隔开）</li>
+</ul>
+<p>​		docker rm -f 容器ID/容器名称 容器ID/容器名称 ...</p>
+<ul>
+<li>删除全部容器</li>
+</ul>
+<p>​		docker rm -f $(docker ps -aq)</p>
+<ul>
+<li>停止所有容器</li>
+</ul>
+<p>​		docker stop $(docker ps -a -q)</p>
+<p><strong>工作中常用docker命令</strong></p>
+<ul>
+<li>查看docker</li>
+</ul>
+<p>​		docker ps</p>
+<ul>
+<li>进入容器</li>
+</ul>
+<p>​		docker exec -it 容器ID/容器名称(CONTAINER ID/NAMES) /bin/bash</p>
+<p>​		docker exec -it 容器ID/容器名称(CONTAINER ID/NAMES) bash</p>
+<p>​		<em>例如</em></p>
+<p>​		docker exec -it 56f0b18af626 /bin/bash</p>
+<p>​		docker exec -it postgres10.7 bash</p>
+<p><strong>查看容器挂载目录</strong></p>
+<ul>
+<li>查询出容器ID或者名称 --CONTAINER ID NAMES</li>
+</ul>
+<p>​		docker ps</p>
+<p>​		docker inspect 容器ID/容器名称 | grep Mounts -A 20</p>
+<p>​		docker inspect 56f0b18af626 | grep Mounts -A 20</p>
+<p><strong>容器拷贝文件</strong></p>
+<ul>
+<li>容器内拷贝文件到宿主机（拷贝出来）</li>
+</ul>
+<p>​		docker cp 容器ID/名称: 容器内文件存放路径 容器外文件存放路径</p>
+<p>​		docker cp 56f0b18af626:/opt/ceshi.txt /opt/dockercpcehi/</p>
+<p>​		ll /opt/dockercpcehi/</p>
+<ul>
+<li>宿主机拷贝文件到容器内</li>
+</ul>
+<p>​		docker cp 宿主机文件路径 容器ID/名称: 容器内文件存放路径</p>
+<p>​		docker cp /opt/dockercpcehi/ceshi.txt 56f0b18af626:/opt/dockerceshifile/</p>
+<p>​		docker exec -it 56f0b18af626 bash</p>
+<p>​		ll /opt/dockerceshifile/</p>
+<p><strong>设置搭建好容器开机自启</strong></p>
+<p>​		docker ps -qa</p>
+<p>​		docker update --restart=always 容器ID/容器名</p>
+<p>​		docker update --restart=always 56f0b18af626</p>
+<p><strong>开启docker 容器端口号</strong></p>
+<ul>
+<li>启动firewalld</li>
+</ul>
+<p>​		systemctl status firewalld.service</p>
+<p>​		systemctl start firewalld.service</p>
+<ul>
+<li>开放端口号</li>
+</ul>
+<p>​		firewall-cmd --zone=public --add-port=5432/tcp --permanent (permanent永久生效，没有此参数重启后失效)</p>
+<ul>
+<li>更新防火墙策略</li>
+</ul>
+<p>​		firewall-cmd --reload</p>
+<ul>
+<li>查看开放端口</li>
+</ul>
+<p>​		firewall-cmd --zone=public --list-ports</p>
+<ul>
+<li>查看5432</li>
+</ul>
+<p>​		firewall-cmd --zone= public --query-port=5432/tcp</p>
+<ul>
+<li>删除端口</li>
+</ul>
+<p>​		firewall-cmd --zone=public --remove-port=5432/tcp --permanent</p>
+<p>​		<em>注：每次更改firewall规则后需重新加载（firewall-cmd --reload）</em></p>
+<ul>
+<li>删除容器</li>
+</ul>
+<p>​		首先需要停止所有的容器（只停止单个时把后面的变量改为image id即可）</p>
+<p>​		docker stop $(docker ps -a -q)</p>
+<p>​		删除所有的容器（只删除单个时把后面的变量改为image id即可）</p>
+<p>​		docker rm $(docker ps -a -q)</p>
 
             </div>
           </article>
@@ -114,9 +234,9 @@
               <div class="next">
                 下一篇
               </div>
-              <a href="https://baoanyu.github.io/post/java-he-xin-bi-ji-chi-xu-geng-xin-zhong/">
+              <a href="https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/">
                 <h3 class="post-title">
-                  Java核心笔记（😁持续更新中~~~）
+                  Git拉取代码，本地有更新冲突怎么办
                 </h3>
               </a>
             </div>
@@ -221,11 +341,11 @@
     </div>
     <div class="row">
       
-        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge success">
+        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge secondary">
           Works
         </a>
       
-        <a href="https://baoanyu.github.io/tag/9BXIAAgvH/" class="badge ">
+        <a href="https://baoanyu.github.io/tag/9BXIAAgvH/" class="badge secondary">
           Java-becomes-god
         </a>
       

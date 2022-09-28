@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baoanyu.github.io</id>
     <title>Bay`Blog</title>
-    <updated>2022-09-23T09:44:25.563Z</updated>
+    <updated>2022-09-28T07:19:57.116Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baoanyu.github.io"/>
     <link rel="self" href="https://baoanyu.github.io/atom.xml"/>
@@ -10,6 +10,31 @@
     <logo>https://baoanyu.github.io/images/avatar.png</logo>
     <icon>https://baoanyu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, Bay`Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Sping boot 编写异步执行方法]]></title>
+        <id>https://baoanyu.github.io/post/sping-boot-bian-xie-yi-bu-zhi-xing-fang-fa/</id>
+        <link href="https://baoanyu.github.io/post/sping-boot-bian-xie-yi-bu-zhi-xing-fang-fa/">
+        </link>
+        <updated>2022-09-28T07:19:25.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<p>启动类开启 @EnableAsync 注解</p>
+</li>
+<li>
+<p>新建Async自义定类</p>
+</li>
+<li>
+<p>实现自定义业务方法，方法或类上加@Async 注解，***此时实现的为有参无返回值的方法，需要打印自定义日志，实现方法的成功或失***败</p>
+<p>使用Async 注解的方法需要注意以下几点</p>
+<pre><code>  * **`@Async` 注解不能和 `@RestController` 或 `@Controller` 同时存在, （动态代理的bug）**
+  * **直接写`@Async`不指定线程池时，如果线程池配置只配了上面`asyncTaskExecutor`一种，则会默认使用该线程池执行，结果和上面一样，如果线程池配置配置了多个线程池，则此时不指定线程池时则会使用系统默认的`SimpleAsyncTaskExecutor`线程执行**
+  * **`@Async` 注解不能和 `@RestController` 或 `@Controller` 同时存在, （动态代理的bug）**
+  * **在同一个类中，一个方法调用另外一个有注解（比如`@Async`，`@Transational`）的方法，注解是不会生效的。**
+  * 其中还有关于 事务的处理的问题，暂没遇到，有需要自行查找资料.</code></pre>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Docker常用命令]]></title>
         <id>https://baoanyu.github.io/post/docker-chang-yong-ming-ling/</id>

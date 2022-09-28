@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Git拉取代码，本地有更新冲突怎么办 | Bay`Blog</title>
+<title>Sping boot 编写异步执行方法 | Bay`Blog</title>
 <meta name="description" content="一个小站">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -87,9 +87,9 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>Git拉取代码，本地有更新冲突怎么办</h1>
+            <h1>Sping boot 编写异步执行方法</h1>
             <p class="article-meta">
-              2022-09-15
+              2022-09-28
               
                 <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge secondary">
                   Works
@@ -98,12 +98,23 @@
             </p>
             
             <div class="post-content">
-              <p>1.使用命令隐藏本地更改</p>
-<p>git  stash</p>
-<p>2.拉取远程代码</p>
-<p>git pull</p>
-<p>3.恢复更新本地更改的代码</p>
-<p>git stash pop</p>
+              <ul>
+<li>
+<p>启动类开启 @EnableAsync 注解</p>
+</li>
+<li>
+<p>新建Async自义定类</p>
+</li>
+<li>
+<p>实现自定义业务方法，方法或类上加@Async 注解，***此时实现的为有参无返回值的方法，需要打印自定义日志，实现方法的成功或失***败</p>
+<p>使用Async 注解的方法需要注意以下几点</p>
+<pre><code>  * **`@Async` 注解不能和 `@RestController` 或 `@Controller` 同时存在, （动态代理的bug）**
+  * **直接写`@Async`不指定线程池时，如果线程池配置只配了上面`asyncTaskExecutor`一种，则会默认使用该线程池执行，结果和上面一样，如果线程池配置配置了多个线程池，则此时不指定线程池时则会使用系统默认的`SimpleAsyncTaskExecutor`线程执行**
+  * **`@Async` 注解不能和 `@RestController` 或 `@Controller` 同时存在, （动态代理的bug）**
+  * **在同一个类中，一个方法调用另外一个有注解（比如`@Async`，`@Transational`）的方法，注解是不会生效的。**
+  * 其中还有关于 事务的处理的问题，暂没遇到，有需要自行查找资料.</code></pre>
+</li>
+</ul>
 
             </div>
           </article>
@@ -114,9 +125,9 @@
               <div class="next">
                 下一篇
               </div>
-              <a href="https://baoanyu.github.io/post/java-he-xin-bi-ji-chi-xu-geng-xin-zhong/">
+              <a href="https://baoanyu.github.io/post/docker-chang-yong-ming-ling/">
                 <h3 class="post-title">
-                  Java核心笔记（😁持续更新中~~~）
+                  Docker常用命令
                 </h3>
               </a>
             </div>
@@ -227,15 +238,15 @@
     </div>
     <div class="row">
       
-        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge ">
+        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge warning">
           Works
         </a>
       
-        <a href="https://baoanyu.github.io/tag/9BXIAAgvH/" class="badge secondary">
+        <a href="https://baoanyu.github.io/tag/9BXIAAgvH/" class="badge ">
           Java-becomes-god
         </a>
       
-        <a href="https://baoanyu.github.io/tag/9mHQnnpkI/" class="badge ">
+        <a href="https://baoanyu.github.io/tag/9mHQnnpkI/" class="badge secondary">
           Other
         </a>
       

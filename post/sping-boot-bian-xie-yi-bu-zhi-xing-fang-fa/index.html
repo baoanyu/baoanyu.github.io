@@ -7,7 +7,7 @@
 <meta name="description" content="一个小站">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://baoanyu.github.io/favicon.ico?v=1664353648043">
+<link rel="shortcut icon" href="https://baoanyu.github.io/favicon.ico?v=1664353720534">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -91,7 +91,7 @@
             <p class="article-meta">
               2022-09-28
               
-                <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge success">
+                <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge secondary">
                   Works
                 </a>
               
@@ -106,11 +106,11 @@
 <p>新建Async自义定类</p>
 </li>
 <li>
-<p>实现自定义业务方法，方法或类上加@Async 注解，***此时实现的为有参无返回值的方法，需要打印自定义日志，实现方法的成功或失***败</p>
+<p>实现自定义业务方法，方法或类上加@Async 注解，<strong>此时实现的为有参无返回值的方法，需要打印自定义日志，实现方法的成功或失败</strong></p>
 <p>使用Async 注解的方法需要注意以下几点</p>
-<pre><code>  * `@Async` 注解不能和 `@RestController` 或 `@Controller` 同时存在, （动态代理的bug）
+<pre><code>  * @Async` 注解不能和 `@RestController` 或 `@Controller` 同时存在, （动态代理的bug）
   * 直接写`@Async`不指定线程池时，如果线程池配置只配了上面`asyncTaskExecutor`一种，则会默认使用该线程池执行，结果和上面一样，如果线程池配置配置了多个线程池，则此时不指定线程池时则会使用系统默认的`SimpleAsyncTaskExecutor`线程执行
-  * `@Async` 注解不能和 `@RestController` 或 `@Controller` 同时存在, （动态代理的bug）
+  * @Async` 注解不能和 `@RestController` 或 `@Controller` 同时存在, （动态代理的bug）
   * 在同一个类中，一个方法调用另外一个有注解（比如`@Async`，`@Transational`）的方法，注解是不会生效的。**
   * 其中还有关于 事务的处理的问题，暂没遇到，有需要自行查找资料.</code></pre>
 </li>
@@ -146,7 +146,7 @@
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://baoanyu.github.io/images/avatar.png?v=1664353648043" class="no-responsive avatar">
+    <img src="https://baoanyu.github.io/images/avatar.png?v=1664353720534" class="no-responsive avatar">
     <div class="text-muted">一个小站</div>
     <div class="social-container">
       
@@ -238,15 +238,15 @@
     </div>
     <div class="row">
       
-        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge ">
+        <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge success">
           Works
         </a>
       
-        <a href="https://baoanyu.github.io/tag/9BXIAAgvH/" class="badge secondary">
+        <a href="https://baoanyu.github.io/tag/9BXIAAgvH/" class="badge success">
           Java-becomes-god
         </a>
       
-        <a href="https://baoanyu.github.io/tag/9mHQnnpkI/" class="badge warning">
+        <a href="https://baoanyu.github.io/tag/9mHQnnpkI/" class="badge secondary">
           Other
         </a>
       

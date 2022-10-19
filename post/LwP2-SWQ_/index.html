@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>MarkDown 基本语法 | Bay`Blog</title>
+<title>工作总结（持续更新~~~） | Bay`Blog</title>
 <meta name="description" content="一个小站">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -87,182 +87,131 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>MarkDown 基本语法</h1>
+            <h1>工作总结（持续更新~~~）</h1>
             <p class="article-meta">
-              2022-06-29
+              2022-10-19
               
-                <a href="https://baoanyu.github.io/tag/9mHQnnpkI/" class="badge success">
-                  Other
+                <a href="https://baoanyu.github.io/tag/7Mv_dwL5n/" class="badge ">
+                  Works
                 </a>
               
             </p>
             
             <div class="post-content">
-              <h4 id="一-标题">一、标题</h4>
-<p>语法格式：<code>#+空格+标题</code>，一个<code>#</code>是一级标题，两个<code>##</code>是两级标题，以此类推，支持六级标题</p>
-<h4 id="二-字体">二、字体</h4>
-<ul>
-<li>
-<p><strong>加粗</strong>语法格式：<code>**加粗**</code></p>
-</li>
-<li>
-<p><em>斜体</em>语法格式：<code>*斜体*</code></p>
-</li>
-<li>
-<p>***斜体加粗***语法格式：``<em><strong>斜体加粗</strong></em>`</p>
-</li>
-<li>
-<p>删除线 语法格式：<code>~~删除线~~</code></p>
-</li>
-<li>
-<p>高亮</p>
-<p>语法格式：<code>==高亮==</code></p>
-</li>
-</ul>
-<h4 id="三-引用">三、引用</h4>
-<p>语法格式：<code>&gt;+引用文字</code></p>
-<blockquote>
-<p>我是引用文字</p>
-</blockquote>
-<p>引用也可以嵌套：</p>
-<blockquote>
-<blockquote>
-<p>如加两个<code>&gt;&gt;</code></p>
-<blockquote>
-<p>三个<code>&gt;&gt;&gt;</code></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>支持无线套娃~~</p>
-<h4 id="四-分割线">四、分割线</h4>
-<p>语法格式：三个或者三个以上的 - 或者 * 都可以，如<code>***</code></p>
-<h4 id="五-图片">五、图片</h4>
-<p>语法格式：<code>![alt](图片地址 ''title'')</code></p>
-<blockquote>
-<p>alt 指的是当图片链接失效时显示的提示文字，可加可不加 title是图片的标题，当鼠标移到图片上时显示的内容，可加可不加</p>
-</blockquote>
-<p><img src="" alt="" loading="lazy">   &gt; 此处暂无图片</p>
-<p>如果你想要调整图片大小，有两种方式：</p>
+              <h3 id="java-迭代器详解"><strong>🚩Java 迭代器详解</strong></h3>
+<p>📚迭代器的定义<br>
+迭代器是属于设计模式之一，迭代器模式提供了一种方法来顺序访问一个聚合对象中各个元素，而不保留该对象的内部表示。</p>
 <ol>
-<li>右击图片，选择缩放图片后，语法格式将变成<code>&lt;img src=&quot;Typora.assets/32.jpg&quot; alt=&quot;32&quot; style=&quot;zoom: 20%;&quot; /&gt;</code>，<code>20%</code>可自行调整</li>
-<li>通过HTML调节，格式如下：</li>
+<li>Iterator对象称为迭代器，主要用于遍历Collection集合中的元素。</li>
+<li>所有实现了Collection接口的集合类都有一个iterator()方法，用以返回一个实现了Iterator接口的对象，即可以返回一个迭代器。</li>
+<li>Iterator仅用于遍历集合，Iterator本身并不存放对象。</li>
+<li>迭代器 it 的两个基本操作是 next 、hasNext 和 remove。</li>
+<li>调用 it.next() 会返回迭代器的下一个元素，并且更新迭代器的状态。</li>
+<li>调用 it.hasNext() 用于检测集合中是否还有元素。</li>
+<li>调用 it.remove() 将迭代器返回的元素删除。</li>
 </ol>
-<pre><code>&lt;center&gt;
-    &lt;img style=&quot;border-radius: 20px;&quot;
-         src=&quot;Typora.assets/baymax.jpg&quot; 
-         alt=&quot;baymax&quot;
-         width=&quot;688&quot; &gt;
-&lt;/center&gt;
+<h3 id="springbootapplication是哪三个注解">SpringBootApplication是哪三个注解</h3>
+<ul>
+<li>
+<p>第一个：<strong>@SpringBootConfiguration</strong>（在这个类的源码中又有一个Configuration的注解）</p>
+<ul>
+<li>@Configuration这个注解的作用就是声明当前类是一个配置类，然后Spring会自动扫描到添加了@Configuration的类，读取其中的配置信息，而@SpringBootConfiguration是来声明当前类是SpringBoot应用的配置类，项目中只能有一个。所以一般我们无需自己添加。</li>
+</ul>
+</li>
+<li>
+<p>第二个：<strong>@EnableAutoConfiguration</strong></p>
+<ul>
+<li>开启自动配置，告诉SpringBoot基于所添加的依赖，去“猜测”你想要如何配置Spring。比如我们引入了spring-boot-starter-web，而这个启动器中帮我们添加了tomcat、SpringMVC的依赖，此时自动配置就知道你是要开发一个web应用，所以就帮你完成了web及SpringMVC的默认配置了！我们使用SpringBoot构建一个项目，只需要引入所需框架的依赖，配置就可以交给SpringBoot处理了。</li>
+</ul>
+</li>
+<li>
+<p>第三个：<strong>@ComponentScan</strong></p>
+<ul>
+<li>
+<p>配置组件扫描的指令</p>
+</li>
+<li>
+<p>提供了类似与<a href="context:component-scan">context:component-scan</a>标签的作用</p>
+</li>
+<li>
+<p>通过basePackageClasses或者basePackages属性来指定要扫描的包。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="说说-list-set-queue-map-四者的区别"><strong>说说 List, Set, Queue, Map 四者的区别？</strong></h3>
+<ul>
+<li>List (对付顺序的好帮⼿): 存储的元素是有序的、可重复的。</li>
+<li>Set (注重独⼀⽆⼆的性质): 存储的元素是⽆序的、不可重复的。</li>
+<li>Queue (实现排队功能的叫号机): 按特定的排队规则来确定先后顺序，存储的元素是有序的、可重复的。</li>
+<li>Map (⽤ key 来搜索的专家): 使⽤键值对（key-value）存储，类似于数学上的函数 y=f(x)，&quot;x&quot;代表 key，&quot;y&quot; 代表 value，key 是⽆序的、不可重复的，value 是⽆序的、可重复的，每个键最多映射到⼀个值。</li>
+</ul>
+<h3 id="java创建线程的四种方法">Java创建线程的四种方法</h3>
+<ul>
+<li>
+<p>第一种: 通过继承<a href="https://so.csdn.net/so/search?q=Thread%E7%B1%BB&amp;spm=1001.2101.3001.7020">Thread类</a>创建线程</p>
+</li>
+<li>
+<p>第二种: 通过实现Runnable接口创建线程</p>
+</li>
+<li>
+<p>第三种: 使用Callable接口 和 FutureTask类创建线程 由于Thread类和Runnbale接口中的run方法没有返回值, 所以这两种方式不能获取异步执行的结果</p>
+</li>
+<li>
+<p>第四种: 通过线程池创建线程</p>
+</li>
+</ul>
+<h3 id="java线程如何返回数据"><strong>Java线程如何返回数据</strong></h3>
+<ul>
+<li>第一种方式：定义获取器，不推荐使用，结果是否正确取决于虚拟机线程调度等相关设计。</li>
+<li>第二种方式：静态回调方法，简单易懂，对于简单的打印输出有效，对于复杂的需求比较无力。</li>
+<li>第三种方式：实例回调方法，推荐使用，功能比较丰富，既可以向子线程传递参数，也可以从子线程取回数据</li>
+</ul>
+<h3 id="前端">前端</h3>
+<ul>
+<li>
+<h4 id="定时器方法">定时器方法</h4>
+</li>
+</ul>
+<pre><code class="language-javascript">function listenEnd() {//定时监听
+    var loop = setInterval(function() {
+        //判断条件
+        if ($(&quot;#divloads&quot;).val() == &quot;1&quot;) {
+            clearInterval(loop);//停止定时任务
+            //业务操作！
+            console.log(&quot;export导出结束~&quot;);
+        } else {
+            //业务操作！
+            getendflag();
+        }
+    }, 5000);//单位毫秒  注意：如果导出页面很慢时，建议循环时间段稍长一点
+}
 </code></pre>
 <ul>
-<li><code>&lt;center&gt;</code>标签设置图片居中对齐</li>
-<li><code>border-radius</code>设置圆角</li>
-<li><code>src</code>放置图片路径（本地路径或网络路径）</li>
-<li><code>alt</code>放置图片链接失效后的显示文字</li>
-<li><code>width</code>设置图片宽度（<code>witdh</code>和<code>height</code>只设置一个即可，等比例缩放）</li>
-</ul>
-<p><img src="" alt="" loading="lazy">  &gt; 此处暂无图片</p>
-<p>你也可以通过如下代码为图片添加图注：</p>
-<pre><code>&lt;center&gt;
-    &lt;img style=&quot;border-radius: 20px;&quot;
-         src=&quot;&quot; 
-         alt=&quot;&quot;
-         width=&quot;688&quot; &gt;
-    &lt;br&gt;
-    &lt;div style=&quot;color: #999; padding: 2px;&quot;&gt;
-        图注
-    &lt;/div&gt;
-&lt;/center&gt;
+<li>
+<h4 id="下拉绑定list集合">下拉绑定list集合</h4>
+<pre><code class="language-javascript">&lt;select data-placeholder=&quot;&amp;#45;&amp;#45;~~&amp;#45;&amp;#45;&quot; name=&quot;~~~&quot; id=&quot;~~~&quot;
+        class=&quot;form-control chosen-select selectpicker&quot; data-live-search=&quot;true&quot; tabindex=&quot;2&quot; data-style=&quot;btn-white&quot;&gt;
+    &lt;option value=&quot;&quot;&gt;请选择&lt;/option&gt;
+    &lt;option th:each=&quot;别名 : ${后端集合}&quot; th:value=&quot;${后端集合名.数据属性}&quot;
+            th:text=&quot;${后端集合名.数据属性/属性名字}&quot;&gt;&lt;/option&gt;
+&lt;/select&gt;
 </code></pre>
-<p><img src="" alt="" loading="lazy">  &gt; 此处暂无图片</p>
-<h4 id="六-超链接">六、超链接</h4>
-<p>语法格式：<code>[超链接名](超链接地址)</code></p>
-<h4 id="七-列表">七、列表</h4>
-<ul>
-<li>无序列表</li>
+</li>
 </ul>
-<p>语法格式：无序列表用 - + * 任何一种都可以，如<code>+ 我是无序列表</code></p>
-<blockquote>
-<p>加号和内容之间需要放置一个空格</p>
-</blockquote>
+<h3 id="一些小方法"><strong>一些小方法</strong></h3>
 <ul>
-<li>有序列表</li>
-</ul>
-<p>语法格式：<code>数字+点+空格+内容</code>，如<code>1. 我是有序列表</code></p>
+<li>合并两个同类型list
 <ul>
-<li>子列表</li>
+<li>
+<p>1。 Stream.of(listA,listB).flatMap(x-&gt;x.stream()).collect(Collectors.toList());</p>
+<p>2。List<T> list = Lists.newArrayList();<br>
+Stream.of(listA,listB).forEach(list:addAll);</p>
+<p>3。Stream.concat(listA.stream(),list2.stream()).collect(Collectors.toList());</p>
+</li>
 </ul>
-<p>在子列表前按下tab键即可构成子列表。</p>
-<h4 id="八-表格">八、表格</h4>
-<p>语法格式：</p>
-<pre><code>|  表头   | 表头  |
-|  ----  | ----  |
-| 单元格  | 单元格 |
-| 单元格  | 单元格 |
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>第二行分割表头和内容，并声明内容的对齐格式。一般而言，不这么用，感觉太费劲了，下面再介绍快捷键。</p>
-</blockquote>
-<h4 id="九-代码">九、代码</h4>
-<ul>
-<li>行内代码</li>
+</li>
 </ul>
-<p>语法格式：用一个反引号包起来 <code>代码内容</code>，代码会以主题中设置的样式出现在行内，但不会实现代码高亮。</p>
-<ul>
-<li>多行代码</li>
-</ul>
-<p>语法格式：代码之间分别用三个反引号包起来，且两边的反引号单独占一行</p>
-<blockquote>
-<p>``` 语言 代码内容 ```</p>
-<p>语言：C、C++、JAVA 等</p>
-</blockquote>
-<h4 id="十-高级技巧">十、高级技巧</h4>
-<ol>
-<li>转义</li>
-</ol>
-<p>Markdown 使用了很多特殊符号来表示特定的意义，如果需要显示特定的符号则需要使用转义字符，Markdown 使用反斜杠转义特殊字符：</p>
-<pre><code>\   反斜线
-`   反引号
-*   星号
-_   下划线
-{}  花括号
-[]  方括号
-()  小括号
-#   井字号
-+   加号
--   减号
-.   英文句点
-!   感叹号
-</code></pre>
-<ol>
-<li>行内公式（inline）用 <code>$...$</code> 括起公式，公式会出现在行内。</li>
-<li>块间公式（display）用 <code>$$...$$</code> 括起公式（注意 <code>$$</code> 后需要换行），公式会默认显示在行中间。</li>
-</ol>
-<pre><code>$$
-	块间公式
-$$
-</code></pre>
-<ol>
-<li>支持HTML</li>
-</ol>
 
             </div>
           </article>
@@ -273,9 +222,9 @@ $$
               <div class="next">
                 下一篇
               </div>
-              <a href="https://baoanyu.github.io/post/yi-xie-hao-yong-de-java-gong-ju-lei/">
+              <a href="https://baoanyu.github.io/post/ben-di-an-zhuang-centos-xu-ni-ji-da-jian-ben-di-ao-si-ting-gitee-kai-yuan-xiang-mu-austinkai-fa-huan-jing-shou-ce/">
                 <h3 class="post-title">
-                  一些好用的Java工具类
+                  本地安装centos虚拟机搭建本地奥斯汀(Gitee 开源项目Austin)开发环境手册TODO
                 </h3>
               </a>
             </div>

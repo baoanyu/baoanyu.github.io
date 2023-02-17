@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baoanyu.github.io</id>
     <title>Bay`Blog</title>
-    <updated>2023-02-17T06:56:46.415Z</updated>
+    <updated>2023-02-17T08:01:49.307Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baoanyu.github.io"/>
     <link rel="self" href="https://baoanyu.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://baoanyu.github.io/favicon.ico</icon>
     <rights>All rights reserved 2023, Bay`Blog</rights>
     <entry>
-        <title type="html"><![CDATA[面试问题第一期MySQL相关（2023.2.17）]]></title>
+        <title type="html"><![CDATA[技术问题第一期MySQL（2023.2.17）]]></title>
         <id>https://baoanyu.github.io/post/ghCv50O5k/</id>
         <link href="https://baoanyu.github.io/post/ghCv50O5k/">
         </link>
@@ -162,7 +162,7 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[面试宝典第一期MySQL相关（2023.2.17更新）]]></title>
+        <title type="html"><![CDATA[技术宝典第一期MySQL（2023.2.17更新）]]></title>
         <id>https://baoanyu.github.io/post/auGSOk7NJ/</id>
         <link href="https://baoanyu.github.io/post/auGSOk7NJ/">
         </link>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>技术问题第一期MySQL（2023.2.17） | Bay·Blog</title>
+<meta name="description" content="一个小站">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://baoanyu.github.io/favicon.ico?v=1722838949542">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://baoanyu.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://baoanyu.github.io">Bay·Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>技术问题第一期MySQL（2023.2.17）</h1>
+            <p class="article-meta">
+              2023-02-17
+              
+                <a href="https://baoanyu.github.io/tag/zvL9-2Vab/" class="badge ">
+                  面试问题
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <h3 id="mysql-遇到过死锁问题吗你是如何解决的">MySQL 遇到过死锁问题吗，你是如何解决的？</h3>
+<ul>
+<li>查看死锁日志show    engine innodb status;</li>
+<li>找出死锁Sql</li>
+<li>分析sql加锁情况</li>
+<li>模拟死锁案发</li>
+<li>分析死锁日志</li>
+<li>分析死锁结果</li>
+</ul>
+<h3 id="悲观锁和乐观锁了解过吗分别代表什么意思">悲观锁和乐观锁了解过吗，分别代表什么意思？</h3>
+<ul>
+<li>
+<p>悲观锁思想就是，当前线程要进来修改数据时，别的线程都得拒之门外~ 比如，可以使用select…for update</p>
+<pre><code class="language-mysql">select * from User where name=‘jay’ for update
+</code></pre>
+<p>以上这条sql语句会锁定了User表中所有符合检索条件（name=‘jay’）的记录。本次事务提交之前，别的线程都无法修改这些记录。</p>
+</li>
+<li>
+<p>乐观锁思想就是，有线程过来，先放过去修改，如果看到别的线程没修改过，就可以修改成功，如果别的线程修改过，就修改失败或者重试。实现方式：乐观锁</p>
+</li>
+</ul>
+<h3 id="如何写sql能够有效的使用到复合索引">如何写sql能够有效的使用到复合索引？</h3>
+<ul>
+<li>
+<p>复合索引，也叫组合索引，用户可以在多个列上建立索引,这种索引叫做复合索引。</p>
+<p>当我们创建一个组合索引的时候，如(k1,k2,k3)，相当于创建了（k1）、(k1,k2)和(k1,k2,k3)三个索引，这就是最左匹配原则。</p>
+<pre><code class="language-mysql">select * from table where k1=A AND k2=B AND k3=D
+</code></pre>
+<p>有关于复合索引，我们需要关注查询Sql条件的顺序，确保最左匹配原则有效，同时可以删除不必要的冗余索引。</p>
+</li>
+</ul>
+<h3 id="某个表千万数据-crud慢如何优化">某个表千万数据 crud慢，如何优化</h3>
+<ul>
+<li>
+<p>可以考虑优化表结构，分表（水平分表，垂直分表</p>
+</li>
+<li>
+<p>分表方案（水平分表，垂直分表，切分规则hash等）</p>
+</li>
+<li>
+<p>分库分表中间件（Mycat，sharding-jdbc等）</p>
+</li>
+<li>
+<p>分库分表一些问题（事务问题？跨节点Join的问题）</p>
+</li>
+<li>
+<p>解决方案（分布式事务等）</p>
+</li>
+<li>
+<p>索引优化 除了分库分表，优化表结构，当然还有所以索引优化等方案</p>
+</li>
+</ul>
+<h3 id="mysql中in-和exists的区别">mysql中in 和exists的区别</h3>
+<ul>
+<li>exists查询的理解就是，先执行主查询，获得数据后，再放到子查询中做条件验证，根据验证结果（true或者false），来决定主查询的数据结果是否得意保留。</li>
+<li>in 先查询子查询 根据子查询的结果匹配主查询的条件</li>
+</ul>
+<h3 id="数据库自增主键可能遇到什么问题">数据库自增主键可能遇到什么问题？</h3>
+<ul>
+<li>主键重复，锁表，主键用完</li>
+</ul>
+<h3 id="大表查询的优化方案">大表查询的优化方案</h3>
+<ul>
+<li>优化shema、sql语句+索引；</li>
+<li>可以考虑加缓存，memcached,     redis，或者JVM本地缓存；</li>
+<li>主从复制，读写分离；分库分表；</li>
+</ul>
+<h3 id="什么是数据库连接池为什么需要数据库连接池呢">什么是数据库连接池?为什么需要数据库连接池呢?</h3>
+<ul>
+<li>
+<p>连接池基本原理：数据库连接池原理：在内部对象池中，维护一定数量的数据库连接，并对外暴露数据库连接的获取和返回方法</p>
+<ul>
+<li>
+<h3 id="应用程序和数据库建立连接的过程">应用程序和数据库建立连接的过程</h3>
+<ul>
+<li>通过TCP协议的三次握手和数据库服务器建立连接</li>
+<li>发送数据库用户账号密码，等待数据库验证用户身份</li>
+<li>完成身份验证后，系统可以提交SQL语句到数据库执行把连接关闭，TCP四次挥手告别。</li>
+</ul>
+</li>
+<li>
+<h3 id="数据库连接池好处">数据库连接池好处</h3>
+<ul>
+<li>资源重用 (连接复用)</li>
+<li>更快的系统响应速度</li>
+<li>新的资源分配手段 统一的连接管理，避免数据库连接泄漏</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="一条sql执行过长的时间你如何优化从哪些方面入手">一条sql执行过长的时间，你如何优化，从哪些方面入手？</h3>
+<ul>
+<li>查看是否涉及多表和子查询，优化Sql结构，如去除冗余字段，是否可拆表等</li>
+<li>优化索引结构，看是否可以适当添加索引</li>
+<li>数量大的表，可以考虑进行分离/分表（如交易流水表）</li>
+<li>数据库主从分离，读写分离</li>
+<li>explain分析sql语句，查看执行计划，优化sql</li>
+<li>查看mysql执行日志，分析是否有其他方面的问题</li>
+</ul>
+<h3 id="blob和text有什么区别">Blob和text有什么区别？</h3>
+<ul>
+<li>Blob用于存储二进制数据，而Text用于存储大字符串。</li>
+<li>Blob值被视为二进制字符串（字节字符串）,它们没有字符集，并且排序和比较基于列值中的字节的数值。</li>
+<li>text值被视为非二进制字符串（字符字符串）。它们有一个字符集，并根据字符集的排序规则对值进行排序和比较。</li>
+</ul>
+<h3 id="hash索引和b树区别是什么你在设计索引是怎么抉择的">hash索引和B+树区别是什么？你在设计索引是怎么抉择的？</h3>
+<ul>
+<li>B+树可以进行范围查询，Hash索引不能。</li>
+<li>B+树支持联合索引的最左侧原则，Hash索引不支持。</li>
+<li>B+树支持order by排序，Hash索引不支持。</li>
+<li>Hash索引在等值查询上比B+树效率更高。</li>
+<li>B+树使用like 进行模糊查询的时候，like后面（比如%开头）的话可以起到优化的作用，Hash索引根本无法进行模糊查询。</li>
+</ul>
+<h3 id="什么是内连接-外连接-交叉连接-笛卡尔积呢">什么是内连接、外连接、交叉连接、笛卡尔积呢？</h3>
+<ul>
+<li>内连接（inner     join）：取得两张表中满足存在连接匹配关系的记录。</li>
+<li>外连接（outer     join）：取得两张表中满足存在连接匹配关系的记录，以及某张表（或两张表）中不满足匹配关系的记录。</li>
+<li>交叉连接（cross     join）：显示两张表所有记录一一对应，没有匹配关系进行筛选，也被称为：笛卡尔积。</li>
+</ul>
+<h3 id="innodb内存结构包含四大核心组件">InnoDB内存结构包含四大核心组件</h3>
+<ul>
+<li>缓冲池(Buffer     Pool)，写缓冲(Change     Buffer)，</li>
+<li>自适应哈希索引(Adaptive     Hash Index)，日志缓冲(Log Buffer)</li>
+</ul>
+<h3 id="索引有哪些优缺点">索引有哪些优缺点？</h3>
+<ul>
+<li>优点
+<ul>
+<li>唯一索引可以保证数据库表中每一行的数据的唯一性</li>
+<li>索引可以加快数据查询速度，减少查询时间</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>创建索引和维护索引要耗费时间</li>
+<li>索引需要占物理空间，除了数据表占用数据空间之外，每一个索引还要占用一定的物理空间</li>
+<li>以表中的数据进行增、删、改的时候，索引也要动态的维护。</li>
+</ul>
+</li>
+</ul>
+<h3 id="何时使用聚簇索引与非聚簇索引">何时使用聚簇索引与非聚簇索引</h3>
+<figure data-type="image" tabindex="1"><img src="C:%5CUsers%5Calber%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230217141551645.png" alt="image-20230217141551645" loading="lazy"></figure>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://baoanyu.github.io/post/auGSOk7NJ/">
+                <h3 class="post-title">
+                  技术宝典第一期MySQL（2023.2.17）
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://baoanyu.github.io/images/avatar.png?v=1722838949542" class="no-responsive avatar">
+    <div class="text-muted">一个小站</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/springCloud/">SpringCloud Alibaba Nacos 组件</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/mac-yi-xie-chang-yong-ming-ling/">Mac一些常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/java8-sheng-ji-java11-de-ji-lu/">Java8升级到Java11，记录每个Java版本的重要特性</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ghCv50O5k/">技术问题第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/auGSOk7NJ/">技术宝典第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/LwP2-SWQ_/">工作总结（2022.10.19更新）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ben-di-an-zhuang-centos-xu-ni-ji-da-jian-ben-di-ao-si-ting-gitee-kai-yuan-xiang-mu-austinkai-fa-huan-jing-shou-ce/">本地安装centos虚拟机搭建本地奥斯汀(Gitee 开源项目Austin)开发环境手册TODO</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/sping-boot-bian-xie-yi-bu-zhi-xing-fang-fa/">Sping boot 编写异步执行方法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/docker-chang-yong-ming-ling/">Docker常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/">Git拉取代码，本地有更新冲突怎么办</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://baoanyu.github.io/tag/dTGX-MDDZ/" class="badge secondary">
+          Java
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/1T284W0ZQ_/" class="badge secondary">
+          Other
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/zvL9-2Vab/" class="badge ">
+          面试问题
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/6l6DUeQ-fz/" class="badge success">
+          面试技术
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/nCjir3oS8y/" class="badge ">
+          Works
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/mj5T-ObLsk/" class="badge secondary">
+          Java-becomes-god
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/dashboard" target="_blank">GitHub</a> | <a class="rss" href="https://baoanyu.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'd515ce026268c048b297',
+        clientSecret: '3ccc2fab73e936d1adcb0c3330ebeb12e8f21fec',
+        repo: 'baoanyu.github.io',
+        owner: 'baoanyu',
+        admin: ['baoanyu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

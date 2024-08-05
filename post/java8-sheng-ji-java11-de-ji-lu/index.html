@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Java8升级到Java11，记录每个Java版本的重要特性 | Bay·Blog</title>
+<meta name="description" content="一个小站">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://baoanyu.github.io/favicon.ico?v=1722838949542">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://baoanyu.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://baoanyu.github.io">Bay·Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Java8升级到Java11，记录每个Java版本的重要特性</h1>
+            <p class="article-meta">
+              2024-08-02
+              
+                <a href="https://baoanyu.github.io/tag/dTGX-MDDZ/" class="badge ">
+                  Java
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <h3 id="java11特性">Java11特性</h3>
+<ul>
+<li>局部变量类型推断<br>
+引入了var关键字，可以用于局部变量的声明，根据初始化值的类型自动推断变量的类型.需要注意的是，var关键字只能用于局部变量的声明，不能用于成员变量、方法参数、方法返回值等。</li>
+</ul>
+<p>​	var message = &quot;Hello, Java 11!&quot;;</p>
+<ul>
+<li>
+<p>新增的字符串方法<br>
+Java 11为String类添加了strip()、stripLeading()、stripTrailing()等方法，用于去除字符串首尾的空格。</p>
+</li>
+<li>
+<p>HTTP/2客户端API<br>
+引入了新的标准化HTTP客户端API，支持HTTP/2协议，并提供了异步和响应式的特性。</p>
+</li>
+<li>
+<p>Epsilon垃圾收集器<br>
+新增了Epsilon垃圾收集器，它是一种实验性的垃圾收集器，不进行内存回收操作，适用于性能测试和短期任务。</p>
+</li>
+<li>
+<p>ZGC垃圾收集器<br>
+ZGC无疑是Java GC算法的一个大变革，相比之前的GC算法，提供了以下亮眼的特性：</p>
+<p>亚毫秒级的最大暂停时间 (最大暂停时间为10ms，但实际暂停时间基本在1ms以内）<br>
+暂停时间与堆大小无关，与活跃对象和根引用集合大小无关<br>
+堆大小从8M到16T都可以支持<br>
+ZGC最早出现在JDK 11中作为实验特性，从Java15开始作为生产特性使用</p>
+</li>
+<li>
+<p>Unicode 10的支持<br>
+Java 11对Unicode进行了更新，支持Unicode版本10。Unicode 10增加了数百个字符和符号，包括新的表情符号和文字。Java 11的更新确保了对最新Unicode标准的支持，使得开发者可以处理更广泛的字符和文本编码。</p>
+</li>
+</ul>
+<h3 id="java10">Java10</h3>
+<pre><code>局部变量类型推断，（类似JS可以通过var来修饰局部变量，编译之后会推断出值的真实类型）
+不可变集合的改进
+并行全垃圾回收器 G1，来优化G1的延迟
+线程本地握手，（允许在不执行全局VM安全点的情况下执行线程回调，可以停止单个线程，而不需要停止所有线程或不停止线程）
+Optional新增orElseThrow()方法
+类数据共享
+Unicode 语言标签扩展
+根证书
+
+重要特性：通过var关键字实现局部变量类型推断，使Java语言变成弱类型语言、JVM的G1垃圾回收由单线程改成多线程并行处理，降低G1的停顿时间。
+</code></pre>
+<h3 id="java9">Java9</h3>
+<pre><code>模块化
+提供了List.of()、Set.of()、Map.of() 和 Map.ofEntries() 等工厂方法
+接口支持私有方法
+Optional 类改进
+多版本兼容Jar包
+JShell工具
+try-with-resources的改进
+Stream API的改进
+设置G1为JVM默认垃圾收集器
+支持http2.0和websocket的API
+
+重要特性：主要是API的优化，如支持HTTP2的Client API、JVM采用G1为默认垃圾收集器。
+</code></pre>
+<h3 id="java8特性">Java8特性</h3>
+<ul>
+<li>
+<p>Lambda表达式<br>
+Lambda表达式是Java 8的最显著特性之一，它允许以更简洁的方式编写匿名函数。Lambda表达式可以用于函数式接口，使得代码更加简洁、可读性更高。</p>
+</li>
+<li>
+<p>函数式接口和API<br>
+Java 8引入了函数式接口，这些接口只有一个抽象方法。此外，标准库中还增加了一些支持函数式编程的API，如Stream API、Optional类等。</p>
+</li>
+<li>
+<p>Stream API<br>
+Stream API提供了一种流式处理集合数据的方式。通过使用Stream API，可以以声明式的方式对集合进行过滤、映射、排序等操作，极大地提高了代码的可读性和简洁性。</p>
+</li>
+<li>
+<p>默认方法（Default Methods）</p>
+</li>
+</ul>
+<p>​	接口中可以定义默认方法，即带有默认实现的方法。这样做允许在接口中添加新方法而不会破坏已有的实现类。</p>
+<ul>
+<li>方法引用</li>
+</ul>
+<p>​	方法引用提供了一种引用已经存在的方法作为Lambda表达式的简化方式。通过方法引用，可以直接传递方法的引用而不是执行具体的Lambda表达式。</p>
+<ul>
+<li>
+<p>Java时间API<br>
+Java 8引入了全新的日期和时间API，取代了原先的Date和Calendar类。新API提供了更好的设计和易用性，以及对时区、日历等功能的支持。</p>
+</li>
+<li>
+<p>CompletableFuture<br>
+CompletableFuture是一种可组合的异步编程机制，用于处理异步操作和并发编程。它提供了更好的错误处理机制和链式编程风格。</p>
+</li>
+<li>
+<p>移除PermGen空间<br>
+Java 8中移除了永久代（PermGen space），取而代之的是元数据区（Metaspace）。这样消除了永久代带来的内存溢出问题，并改善了垃圾回收的效率。</p>
+</li>
+</ul>
+<p>​</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://baoanyu.github.io/post/ghCv50O5k/">
+                <h3 class="post-title">
+                  技术问题第一期MySQL（2023.2.17）
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://baoanyu.github.io/images/avatar.png?v=1722838949542" class="no-responsive avatar">
+    <div class="text-muted">一个小站</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/springCloud/">SpringCloud Alibaba Nacos 组件</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/mac-yi-xie-chang-yong-ming-ling/">Mac一些常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/java8-sheng-ji-java11-de-ji-lu/">Java8升级到Java11，记录每个Java版本的重要特性</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ghCv50O5k/">技术问题第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/auGSOk7NJ/">技术宝典第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/LwP2-SWQ_/">工作总结（2022.10.19更新）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ben-di-an-zhuang-centos-xu-ni-ji-da-jian-ben-di-ao-si-ting-gitee-kai-yuan-xiang-mu-austinkai-fa-huan-jing-shou-ce/">本地安装centos虚拟机搭建本地奥斯汀(Gitee 开源项目Austin)开发环境手册TODO</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/sping-boot-bian-xie-yi-bu-zhi-xing-fang-fa/">Sping boot 编写异步执行方法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/docker-chang-yong-ming-ling/">Docker常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/">Git拉取代码，本地有更新冲突怎么办</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://baoanyu.github.io/tag/dTGX-MDDZ/" class="badge ">
+          Java
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/1T284W0ZQ_/" class="badge success">
+          Other
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/zvL9-2Vab/" class="badge secondary">
+          面试问题
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/6l6DUeQ-fz/" class="badge secondary">
+          面试技术
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/nCjir3oS8y/" class="badge warning">
+          Works
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/mj5T-ObLsk/" class="badge secondary">
+          Java-becomes-god
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/dashboard" target="_blank">GitHub</a> | <a class="rss" href="https://baoanyu.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'd515ce026268c048b297',
+        clientSecret: '3ccc2fab73e936d1adcb0c3330ebeb12e8f21fec',
+        repo: 'baoanyu.github.io',
+        owner: 'baoanyu',
+        admin: ['baoanyu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

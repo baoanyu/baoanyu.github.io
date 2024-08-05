@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://baoanyu.github.io</id>
+    <title>Bay·Blog</title>
+    <updated>2024-08-05T06:27:00.556Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://baoanyu.github.io"/>
+    <link rel="self" href="https://baoanyu.github.io/atom.xml"/>
+    <subtitle>一个小站</subtitle>
+    <logo>https://baoanyu.github.io/images/avatar.png</logo>
+    <icon>https://baoanyu.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, Bay·Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[SpringCloud Alibaba Nacos 组件]]></title>
+        <id>https://baoanyu.github.io/post/springCloud/</id>
+        <link href="https://baoanyu.github.io/post/springCloud/">
+        </link>
+        <updated>2024-08-02T13:34:15.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mac一些常用命令]]></title>
+        <id>https://baoanyu.github.io/post/mac-yi-xie-chang-yong-ming-ling/</id>
+        <link href="https://baoanyu.github.io/post/mac-yi-xie-chang-yong-ming-ling/">
+        </link>
+        <updated>2024-08-02T12:50:29.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java8升级到Java11，记录每个Java版本的重要特性]]></title>
+        <id>https://baoanyu.github.io/post/java8-sheng-ji-java11-de-ji-lu/</id>
+        <link href="https://baoanyu.github.io/post/java8-sheng-ji-java11-de-ji-lu/">
+        </link>
+        <updated>2024-08-02T12:43:23.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[技术问题第一期MySQL（2023.2.17）]]></title>
+        <id>https://baoanyu.github.io/post/ghCv50O5k/</id>
+        <link href="https://baoanyu.github.io/post/ghCv50O5k/">
+        </link>
+        <updated>2023-02-17T06:19:08.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[技术宝典第一期MySQL（2023.2.17）]]></title>
+        <id>https://baoanyu.github.io/post/auGSOk7NJ/</id>
+        <link href="https://baoanyu.github.io/post/auGSOk7NJ/">
+        </link>
+        <updated>2023-02-17T05:55:15.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[工作总结（2022.10.19更新）]]></title>
+        <id>https://baoanyu.github.io/post/LwP2-SWQ_/</id>
+        <link href="https://baoanyu.github.io/post/LwP2-SWQ_/">
+        </link>
+        <updated>2022-10-19T01:59:01.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[本地安装centos虚拟机搭建本地奥斯汀(Gitee 开源项目Austin)开发环境手册TODO]]></title>
+        <id>https://baoanyu.github.io/post/ben-di-an-zhuang-centos-xu-ni-ji-da-jian-ben-di-ao-si-ting-gitee-kai-yuan-xiang-mu-austinkai-fa-huan-jing-shou-ce/</id>
+        <link href="https://baoanyu.github.io/post/ben-di-an-zhuang-centos-xu-ni-ji-da-jian-ben-di-ao-si-ting-gitee-kai-yuan-xiang-mu-austinkai-fa-huan-jing-shou-ce/">
+        </link>
+        <updated>2022-10-10T07:45:56.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Sping boot 编写异步执行方法]]></title>
+        <id>https://baoanyu.github.io/post/sping-boot-bian-xie-yi-bu-zhi-xing-fang-fa/</id>
+        <link href="https://baoanyu.github.io/post/sping-boot-bian-xie-yi-bu-zhi-xing-fang-fa/">
+        </link>
+        <updated>2022-09-28T07:19:25.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker常用命令]]></title>
+        <id>https://baoanyu.github.io/post/docker-chang-yong-ming-ling/</id>
+        <link href="https://baoanyu.github.io/post/docker-chang-yong-ming-ling/">
+        </link>
+        <updated>2022-09-22T09:47:58.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Git拉取代码，本地有更新冲突怎么办]]></title>
+        <id>https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/</id>
+        <link href="https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/">
+        </link>
+        <updated>2022-09-15T06:51:05.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java核心笔记]]></title>
+        <id>https://baoanyu.github.io/post/java-he-xin-bi-ji-chi-xu-geng-xin-zhong/</id>
+        <link href="https://baoanyu.github.io/post/java-he-xin-bi-ji-chi-xu-geng-xin-zhong/">
+        </link>
+        <updated>2022-07-28T10:23:02.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ StringBuffer和StringBuilder 的区别]]></title>
+        <id>https://baoanyu.github.io/post/stringbuffer-he-stringbuilder-de-qu-bie/</id>
+        <link href="https://baoanyu.github.io/post/stringbuffer-he-stringbuilder-de-qu-bie/">
+        </link>
+        <updated>2022-06-29T10:37:05.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MarkDown 基本语法]]></title>
+        <id>https://baoanyu.github.io/post/markdown-ji-ben-yu-fa/</id>
+        <link href="https://baoanyu.github.io/post/markdown-ji-ben-yu-fa/">
+        </link>
+        <updated>2022-06-29T08:06:55.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一些好用的Java工具类]]></title>
+        <id>https://baoanyu.github.io/post/yi-xie-hao-yong-de-java-gong-ju-lei/</id>
+        <link href="https://baoanyu.github.io/post/yi-xie-hao-yong-de-java-gong-ju-lei/">
+        </link>
+        <updated>2022-06-28T08:20:58.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[往Spring容器初始化bean的方法]]></title>
+        <id>https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/</id>
+        <link href="https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/">
+        </link>
+        <updated>2022-06-23T07:04:56.000Z</updated>
+    </entry>
+</feed>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Docker常用命令 | Bay·Blog</title>
+<meta name="description" content="一个小站">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://baoanyu.github.io/favicon.ico?v=1722838949542">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://baoanyu.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://baoanyu.github.io">Bay·Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Docker常用命令</h1>
+            <p class="article-meta">
+              2022-09-22
+              
+                <a href="https://baoanyu.github.io/tag/nCjir3oS8y/" class="badge warning">
+                  Works
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <!-- 工作常用查看运行的java容器的日志 -->
+<p>查看日志</p>
+<h1 id="docker-ps-a">docker ps -a</h1>
+<p>docker logs container_Id<br>
+复制代码<br>
+占用资源</p>
+<p>docker stats name</p>
+<p><strong>docker 常用基础命令总结</strong></p>
+<ul>
+<li>启动docker</li>
+</ul>
+<p>​		systemctl start docker</p>
+<ul>
+<li>停止dokcer</li>
+</ul>
+<p>​		systemctl stop docker</p>
+<ul>
+<li>查看docker状态</li>
+</ul>
+<p>​		systemctl status docker</p>
+<ul>
+<li>重启docker</li>
+</ul>
+<p>​		systemctl restart docker</p>
+<ul>
+<li>设置docker 开机自启</li>
+</ul>
+<p>​		systemctl enable docker</p>
+<ul>
+<li>查看docker 版本</li>
+</ul>
+<p>​		docker version</p>
+<ul>
+<li>查看docker 镜像</li>
+</ul>
+<p>​		docker images</p>
+<ul>
+<li>查看docker 运行列表</li>
+</ul>
+<p>​		docker ps</p>
+<ul>
+<li>查看docker （运行、停止）</li>
+</ul>
+<p>​		docker ps -aq</p>
+<ul>
+<li>删除容器</li>
+</ul>
+<p>​		docker rm -f 容器ID/容器名称(CONTAINER ID/NAMES)</p>
+<ul>
+<li>删除多个容器（空格隔开）</li>
+</ul>
+<p>​		docker rm -f 容器ID/容器名称 容器ID/容器名称 ...</p>
+<ul>
+<li>删除全部容器</li>
+</ul>
+<p>​		docker rm -f $(docker ps -aq)</p>
+<ul>
+<li>停止所有容器</li>
+</ul>
+<p>​		docker stop $(docker ps -a -q)</p>
+<p><strong>工作中常用docker命令</strong></p>
+<ul>
+<li>查看docker</li>
+</ul>
+<p>​		docker ps</p>
+<ul>
+<li>进入容器</li>
+</ul>
+<p>​		docker exec -it 容器ID/容器名称(CONTAINER ID/NAMES) /bin/bash</p>
+<p>​		docker exec -it 容器ID/容器名称(CONTAINER ID/NAMES) bash</p>
+<p>​		<em>例如</em></p>
+<p>​		docker exec -it 56f0b18af626 /bin/bash</p>
+<p>​		docker exec -it postgres10.7 bash</p>
+<p><strong>查看容器挂载目录</strong></p>
+<ul>
+<li>查询出容器ID或者名称 --CONTAINER ID NAMES</li>
+</ul>
+<p>​		docker ps</p>
+<p>​		docker inspect 容器ID/容器名称 | grep Mounts -A 20</p>
+<p>​		docker inspect 56f0b18af626 | grep Mounts -A 20</p>
+<p><strong>容器拷贝文件</strong></p>
+<ul>
+<li>容器内拷贝文件到宿主机（拷贝出来）</li>
+</ul>
+<p>​		docker cp 容器ID/名称: 容器内文件存放路径 容器外文件存放路径</p>
+<p>​		docker cp 56f0b18af626:/opt/ceshi.txt /opt/dockercpcehi/</p>
+<p>​		ll /opt/dockercpcehi/</p>
+<ul>
+<li>宿主机拷贝文件到容器内</li>
+</ul>
+<p>​		docker cp 宿主机文件路径 容器ID/名称: 容器内文件存放路径</p>
+<p>​		docker cp /opt/dockercpcehi/ceshi.txt 56f0b18af626:/opt/dockerceshifile/</p>
+<p>​		docker exec -it 56f0b18af626 bash</p>
+<p>​		ll /opt/dockerceshifile/</p>
+<p><strong>设置搭建好容器开机自启</strong></p>
+<p>​		docker ps -qa</p>
+<p>​		docker update --restart=always 容器ID/容器名</p>
+<p>​		docker update --restart=always 56f0b18af626</p>
+<p><strong>开启docker 容器端口号</strong></p>
+<ul>
+<li>启动firewalld</li>
+</ul>
+<p>​		systemctl status firewalld.service</p>
+<p>​		systemctl start firewalld.service</p>
+<ul>
+<li>开放端口号</li>
+</ul>
+<p>​		firewall-cmd --zone=public --add-port=5432/tcp --permanent (permanent永久生效，没有此参数重启后失效)</p>
+<ul>
+<li>更新防火墙策略</li>
+</ul>
+<p>​		firewall-cmd --reload</p>
+<ul>
+<li>查看开放端口</li>
+</ul>
+<p>​		firewall-cmd --zone=public --list-ports</p>
+<ul>
+<li>查看5432</li>
+</ul>
+<p>​		firewall-cmd --zone= public --query-port=5432/tcp</p>
+<ul>
+<li>删除端口</li>
+</ul>
+<p>​		firewall-cmd --zone=public --remove-port=5432/tcp --permanent</p>
+<p>​		<em>注：每次更改firewall规则后需重新加载（firewall-cmd --reload）</em></p>
+<ul>
+<li>删除容器</li>
+</ul>
+<p>​		首先需要停止所有的容器（只停止单个时把后面的变量改为image id即可）</p>
+<p>​		docker stop $(docker ps -a -q)</p>
+<p>​		删除所有的容器（只删除单个时把后面的变量改为image id即可）</p>
+<p>​		docker rm $(docker ps -a -q)</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/">
+                <h3 class="post-title">
+                  Git拉取代码，本地有更新冲突怎么办
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://baoanyu.github.io/images/avatar.png?v=1722838949542" class="no-responsive avatar">
+    <div class="text-muted">一个小站</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/springCloud/">SpringCloud Alibaba Nacos 组件</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/mac-yi-xie-chang-yong-ming-ling/">Mac一些常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/java8-sheng-ji-java11-de-ji-lu/">Java8升级到Java11，记录每个Java版本的重要特性</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ghCv50O5k/">技术问题第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/auGSOk7NJ/">技术宝典第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/LwP2-SWQ_/">工作总结（2022.10.19更新）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ben-di-an-zhuang-centos-xu-ni-ji-da-jian-ben-di-ao-si-ting-gitee-kai-yuan-xiang-mu-austinkai-fa-huan-jing-shou-ce/">本地安装centos虚拟机搭建本地奥斯汀(Gitee 开源项目Austin)开发环境手册TODO</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/sping-boot-bian-xie-yi-bu-zhi-xing-fang-fa/">Sping boot 编写异步执行方法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/docker-chang-yong-ming-ling/">Docker常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/">Git拉取代码，本地有更新冲突怎么办</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://baoanyu.github.io/tag/dTGX-MDDZ/" class="badge warning">
+          Java
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/1T284W0ZQ_/" class="badge secondary">
+          Other
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/zvL9-2Vab/" class="badge secondary">
+          面试问题
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/6l6DUeQ-fz/" class="badge ">
+          面试技术
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/nCjir3oS8y/" class="badge secondary">
+          Works
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/mj5T-ObLsk/" class="badge secondary">
+          Java-becomes-god
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/dashboard" target="_blank">GitHub</a> | <a class="rss" href="https://baoanyu.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'd515ce026268c048b297',
+        clientSecret: '3ccc2fab73e936d1adcb0c3330ebeb12e8f21fec',
+        repo: 'baoanyu.github.io',
+        owner: 'baoanyu',
+        admin: ['baoanyu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

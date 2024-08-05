@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title> StringBuffer和StringBuilder 的区别 | Bay·Blog</title>
+<meta name="description" content="一个小站">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://baoanyu.github.io/favicon.ico?v=1722838949542">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://baoanyu.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://baoanyu.github.io">Bay·Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1> StringBuffer和StringBuilder 的区别</h1>
+            <p class="article-meta">
+              2022-06-29
+              
+                <a href="https://baoanyu.github.io/tag/nCjir3oS8y/" class="badge secondary">
+                  Works
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <ul>
+<li>
+<p>区别1：线程安全<br>
+StringBuffer：线程安全，StringBuilder：线程不安全。因为 StringBuffer 的所有公开方法都是 synchronized 修饰的，而 StringBuilder 并没有 synchronized 修饰。</p>
+</li>
+<li>
+<p>区别2：缓冲区</p>
+<p>StringBuffer 每次获取 toString 都会直接使用缓存区的 toStringCache 值来构造一个字符串。</p>
+<p>StringBuilder 则每次都需要复制一次字符数组，再构造一个字符串。</p>
+<p>所以， StringBuffer 对缓存区优化，不过 StringBuffer 的这个toString 方法仍然是同步的。</p>
+</li>
+<li>
+<p>区别3：性能<br>
+既然 StringBuffer 是线程安全的，它的所有公开方法都是同步的，StringBuilder 是没有对方法加锁同步的，所以毫无疑问，StringBuilder 的性能要远大于 StringBuffer。</p>
+</li>
+<li>
+<p>总结<br>
+StringBuffer 适用于用在多线程操作同一个 StringBuffer 的场景，如果是单线程场合 StringBuilder 更适合。</p>
+</li>
+</ul>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://baoanyu.github.io/post/markdown-ji-ben-yu-fa/">
+                <h3 class="post-title">
+                  MarkDown 基本语法
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://baoanyu.github.io/images/avatar.png?v=1722838949542" class="no-responsive avatar">
+    <div class="text-muted">一个小站</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/springCloud/">SpringCloud Alibaba Nacos 组件</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/mac-yi-xie-chang-yong-ming-ling/">Mac一些常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/java8-sheng-ji-java11-de-ji-lu/">Java8升级到Java11，记录每个Java版本的重要特性</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ghCv50O5k/">技术问题第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/auGSOk7NJ/">技术宝典第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/LwP2-SWQ_/">工作总结（2022.10.19更新）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ben-di-an-zhuang-centos-xu-ni-ji-da-jian-ben-di-ao-si-ting-gitee-kai-yuan-xiang-mu-austinkai-fa-huan-jing-shou-ce/">本地安装centos虚拟机搭建本地奥斯汀(Gitee 开源项目Austin)开发环境手册TODO</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/sping-boot-bian-xie-yi-bu-zhi-xing-fang-fa/">Sping boot 编写异步执行方法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/docker-chang-yong-ming-ling/">Docker常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/">Git拉取代码，本地有更新冲突怎么办</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://baoanyu.github.io/tag/dTGX-MDDZ/" class="badge ">
+          Java
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/1T284W0ZQ_/" class="badge ">
+          Other
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/zvL9-2Vab/" class="badge warning">
+          面试问题
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/6l6DUeQ-fz/" class="badge ">
+          面试技术
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/nCjir3oS8y/" class="badge ">
+          Works
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/mj5T-ObLsk/" class="badge secondary">
+          Java-becomes-god
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/dashboard" target="_blank">GitHub</a> | <a class="rss" href="https://baoanyu.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'd515ce026268c048b297',
+        clientSecret: '3ccc2fab73e936d1adcb0c3330ebeb12e8f21fec',
+        repo: 'baoanyu.github.io',
+        owner: 'baoanyu',
+        admin: ['baoanyu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

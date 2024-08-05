@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>一些好用的Java工具类 | Bay·Blog</title>
+<meta name="description" content="一个小站">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://baoanyu.github.io/favicon.ico?v=1722838949542">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://baoanyu.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://baoanyu.github.io">Bay·Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>一些好用的Java工具类</h1>
+            <p class="article-meta">
+              2022-06-28
+              
+                <a href="https://baoanyu.github.io/tag/nCjir3oS8y/" class="badge secondary">
+                  Works
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <ul>
+<li>
+<p><code>java.util</code>包下的<code>Collections</code>类</p>
+<p>作用场景：适用于排序(sort-reverse)，获取最大值或最小值(max-min)，转换线程安全集合(synchronizedList)，转换不可修改集合(unmodifiablexxx)，返回空集合(emptyList)</p>
+</li>
+<li>
+<p><code>CollectionUtils</code>工具类</p>
+<p>apache 的 CollectionUtils 工具类比较优先，因支持的方法比较多</p>
+<p>集合判空(isEmpty)，对两个集合进行操作(union-并集，intersection-交集)</p>
+</li>
+<li>
+<p><code>Objects</code>工具类</p>
+<p>对象判空(isNull)，获取对象HashCode(hashCode)</p>
+</li>
+<li>
+<p><code>BooleanUtils</code>工具类</p>
+<p>针对Boolean类型进行操作：转换数字toInteger，转换原始的boolean toBoolean</p>
+</li>
+<li>
+<p><code>org.apache.commons.lang3</code>包下的<code>StringUtils</code>工具类</p>
+<p>优先推荐使用<code>isBlank</code>和<code>isNotBlank</code>方法，因为它会把<code>&quot; &quot;</code>也考虑进去。</p>
+<p>使用 StringUtils 的 split 方法会返回 null</p>
+<p>判断是否是纯数字isNumeric</p>
+</li>
+<li>
+<p>Assert<code>类，它表示</code>断言类</p>
+</li>
+<li>
+<p><code>org.apache.commons.io</code>包下的<code>IOUtils</code>类 流处理类</p>
+<p>IOUtils 类的<code>write</code></p>
+<p>IOUtils 类的<code>toByteArray</code></p>
+</li>
+<li>
+<p><code>MDC</code>是<code>org.slf4j</code>包下的一个类，它的全称是 Mapped Diagnostic Context，我们可以认为它是一个线程安全的存放诊断日志的容器。</p>
+</li>
+<li>
+<p>获取对象工具类</p>
+<p>如果你想获取某个对象的所有接口，可以使用 ClassUtils 的<code>getAllInterfaces</code>方法</p>
+<p>如果你想获取某个类的包名，可以使用 ClassUtils 的<code>getPackageName</code>方法</p>
+<p>如果你想判断某个类是否内部类，可以使用 ClassUtils 的<code>isInnerClass</code>方法</p>
+</li>
+<li>
+<p>Http枚举类</p>
+<p>其实<code>org.springframework.http</code>包下的 HttpStatus 枚举，或者<code>org.apache.http</code>包下的<code>HttpStatus</code>接口，已经把常用的 http 返回码给我们定义好了，直接拿来用就可以了，真的不用再重复定义了</p>
+</li>
+</ul>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://baoanyu.github.io/post/wang-spring-rong-qi-chu-shi-hua-bean-de-fang-fa/">
+                <h3 class="post-title">
+                  往Spring容器初始化bean的方法
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://baoanyu.github.io/images/avatar.png?v=1722838949542" class="no-responsive avatar">
+    <div class="text-muted">一个小站</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/springCloud/">SpringCloud Alibaba Nacos 组件</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/mac-yi-xie-chang-yong-ming-ling/">Mac一些常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/java8-sheng-ji-java11-de-ji-lu/">Java8升级到Java11，记录每个Java版本的重要特性</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ghCv50O5k/">技术问题第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/auGSOk7NJ/">技术宝典第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/LwP2-SWQ_/">工作总结（2022.10.19更新）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ben-di-an-zhuang-centos-xu-ni-ji-da-jian-ben-di-ao-si-ting-gitee-kai-yuan-xiang-mu-austinkai-fa-huan-jing-shou-ce/">本地安装centos虚拟机搭建本地奥斯汀(Gitee 开源项目Austin)开发环境手册TODO</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/sping-boot-bian-xie-yi-bu-zhi-xing-fang-fa/">Sping boot 编写异步执行方法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/docker-chang-yong-ming-ling/">Docker常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/">Git拉取代码，本地有更新冲突怎么办</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://baoanyu.github.io/tag/dTGX-MDDZ/" class="badge secondary">
+          Java
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/1T284W0ZQ_/" class="badge ">
+          Other
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/zvL9-2Vab/" class="badge secondary">
+          面试问题
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/6l6DUeQ-fz/" class="badge warning">
+          面试技术
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/nCjir3oS8y/" class="badge warning">
+          Works
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/mj5T-ObLsk/" class="badge ">
+          Java-becomes-god
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/dashboard" target="_blank">GitHub</a> | <a class="rss" href="https://baoanyu.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'd515ce026268c048b297',
+        clientSecret: '3ccc2fab73e936d1adcb0c3330ebeb12e8f21fec',
+        repo: 'baoanyu.github.io',
+        owner: 'baoanyu',
+        admin: ['baoanyu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

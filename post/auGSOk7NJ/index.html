@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>技术宝典第一期MySQL（2023.2.17） | Bay·Blog</title>
+<meta name="description" content="一个小站">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://baoanyu.github.io/favicon.ico?v=1722838949542">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://baoanyu.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://baoanyu.github.io">Bay·Blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>技术宝典第一期MySQL（2023.2.17）</h1>
+            <p class="article-meta">
+              2023-02-17
+              
+                <a href="https://baoanyu.github.io/tag/6l6DUeQ-fz/" class="badge secondary">
+                  面试技术
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <ul>
+<li>
+<p>mysql 常用存储引擎及其区别</p>
+<ul>
+<li>InnoDB 具备外键支持功能的事务处理的引擎-&gt;<strong>InnoDB 底层存储结构为B+树， B树的每个节点对应innodb的一个page，page大小是固定的</strong></li>
+<li>MyISAM 主要的非事务处理存储引擎</li>
+</ul>
+</li>
+<li>
+<p>mysql四种事务隔离级别</p>
+<ul>
+<li><strong>读未提交</strong>(Read Uncommitted)  <em>脏读  select语句不加锁，这是并发最高，一致性最差的隔离级别。</em></li>
+<li><strong>读提交</strong>(Read Committed, RC) 最常用的隔离级别</li>
+<li><strong>可重复读</strong>(Repeated Read, RR)  <em><strong>这是InnoDB默认的隔离级别</strong></em></li>
+<li><strong>串行化</strong>(Serializable)</li>
+</ul>
+</li>
+<li>
+<p>mysql事务的四大特性及其实现原理（ACID）</p>
+<ul>
+<li>原子性   <em><strong>简介：事务作为一个整体，要么都执行要么都不执行</strong></em></li>
+<li>一致性   <em><strong>简介：事务开始之前和事务结束以后，数据不会被破坏</strong></em></li>
+<li>隔离性   <em><strong>简介：多个事务并发访问时，事务之间是相互隔离的</strong></em></li>
+<li>持久性   <em><strong>简介：持久化操作</strong></em></li>
+</ul>
+</li>
+<li>
+<p>mysql 函数，存储过程，触发器，<strong>视图(MySQL 视图（View）是一种虚拟存在的表，同真实表一样，视图也由列和行构成，但视图并不实际存在于数据库中。行和列的数据来自于定义视图的查询中所使用的表，并且还是在使用视图时动态生成的。)</strong></p>
+</li>
+<li>
+<p>MySQL优化 -&gt;优化前可以用  <em><strong>explain分析关键sql的执行计划</strong></em></p>
+<ul>
+<li>加索引</li>
+<li>避免返回不必要的数据</li>
+<li>sql分批执行（在数据量较大时）</li>
+<li>优化SQL结构</li>
+<li>优化架构（主从复制，分库分表&lt;常用的中间件，sharding-jdbc,mycat&gt;)</li>
+</ul>
+</li>
+<li>
+<p>mysql 索引</p>
+<ul>
+<li>主键索引，唯一索引，普通索引，全文索引，组合索引</li>
+<li>组合索引的使用-&gt;遵循最左原则</li>
+<li>索引失效情况-&gt;1.不满足最左原则2.索引列参与计算3.索引列使用了函数4.错误的使用like关键字 使用or关键字，5.索引列作比较6,使用查询条件  in  exists7.参数不同</li>
+</ul>
+</li>
+<li>
+<p>mysql 主从复制的步骤（主数据库和从数据库互通需要相关用户权限，其中主库负责写，从库负责读取，<strong>交付的关键为binlog文件</strong>）</p>
+<ul>
+<li>步骤一：主库的更新事件(update、insert、delete)被写到binlog</li>
+<li>步骤二：从库发起连接，连接到主库。</li>
+<li>步骤三：此时主库创建一个binlog dump thread，把binlog的内容发送到从库。</li>
+<li>步骤四：从库启动之后，<strong>创建一个I/O线程，读取主库传过来的binlog内容并写入到relay log</strong></li>
+<li>步骤五：<strong>还会创建一个SQL线程，从relay log里面读取内容，从Exec_Master_Log_Pos位置开始执行读取到的更新事件，将更新内容写入到slave的db</strong></li>
+</ul>
+</li>
+<li>
+<p>mysql 行转列列传行  行转列利用关键子 cash when       列转行  利用 UNION与UNION ALL的关键字</p>
+<ul>
+<li>
+<p>附：UNION与UNION ALL的区别（摘）：</p>
+<p>1.对重复结果的处理：UNION会去掉重复记录，UNION ALL不会；</p>
+<p>2.对排序的处理：UNION会排序，UNION ALL只是简单地将两个结果集合并；</p>
+<p>3.效率方面的区别：因为UNION 会做去重和排序处理，因此效率比UNION ALL慢很多；</p>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://baoanyu.github.io/post/LwP2-SWQ_/">
+                <h3 class="post-title">
+                  工作总结（2022.10.19更新）
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://baoanyu.github.io/images/avatar.png?v=1722838949542" class="no-responsive avatar">
+    <div class="text-muted">一个小站</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/springCloud/">SpringCloud Alibaba Nacos 组件</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/mac-yi-xie-chang-yong-ming-ling/">Mac一些常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/java8-sheng-ji-java11-de-ji-lu/">Java8升级到Java11，记录每个Java版本的重要特性</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ghCv50O5k/">技术问题第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/auGSOk7NJ/">技术宝典第一期MySQL（2023.2.17）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/LwP2-SWQ_/">工作总结（2022.10.19更新）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/ben-di-an-zhuang-centos-xu-ni-ji-da-jian-ben-di-ao-si-ting-gitee-kai-yuan-xiang-mu-austinkai-fa-huan-jing-shou-ce/">本地安装centos虚拟机搭建本地奥斯汀(Gitee 开源项目Austin)开发环境手册TODO</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/sping-boot-bian-xie-yi-bu-zhi-xing-fang-fa/">Sping boot 编写异步执行方法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/docker-chang-yong-ming-ling/">Docker常用命令</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://baoanyu.github.io/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/">Git拉取代码，本地有更新冲突怎么办</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://baoanyu.github.io/tag/dTGX-MDDZ/" class="badge warning">
+          Java
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/1T284W0ZQ_/" class="badge secondary">
+          Other
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/zvL9-2Vab/" class="badge ">
+          面试问题
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/6l6DUeQ-fz/" class="badge secondary">
+          面试技术
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/nCjir3oS8y/" class="badge secondary">
+          Works
+        </a>
+      
+        <a href="https://baoanyu.github.io/tag/mj5T-ObLsk/" class="badge success">
+          Java-becomes-god
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/dashboard" target="_blank">GitHub</a> | <a class="rss" href="https://baoanyu.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'd515ce026268c048b297',
+        clientSecret: '3ccc2fab73e936d1adcb0c3330ebeb12e8f21fec',
+        repo: 'baoanyu.github.io',
+        owner: 'baoanyu',
+        admin: ['baoanyu'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

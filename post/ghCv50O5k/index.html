@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="/styles/main.min.css">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+<style>:root { --heatmap-color: #39d353; }</style>
+
+
+
+<style>
+  .theme-toggle-sun  { display: flex; }
+  .theme-toggle-moon { display: none; }
+  :root.theme-light .theme-toggle-sun  { display: none; }
+  :root.theme-light .theme-toggle-moon { display: flex; }
+</style>
+
+
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('flavor-theme');
+      var theme = saved || 'dark';
+      if (theme === 'light') {
+        document.documentElement.classList.add('theme-light');
+      }
+    } catch (e) { }
+  })();
+</script>
+  <meta name="generator" content="Gridea Pro 1.2.2">
+  <title>技术问题第一期MySQL（2023.2.17） | Bay`Blog</title>
+  
+<meta property="og:title" content="技术问题第一期MySQL（2023.2.17）" />
+<meta property="og:type" content="article" />
+
+
+<meta name="description" content="MySQL 遇到过死锁问题吗，你是如何解决的？ 查看死锁日志show engine innodb status; 找出死锁Sql 分析sql加锁情况 模拟死锁案发 分析死锁日志 分析死锁结果 悲观锁和乐观锁了解过吗，分别代表什么意思？ 悲观锁思想就是，当前线程要进来修改数据时，别的线程都得拒之门外~ 比如，可以使用sel&amp;hellip;">
+<link rel="canonical" href="https://baoanyu.github.io/post/ghCv50O5k/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"技术问题第一期MySQL（2023.2.17）","url":"https://baoanyu.github.io/post/ghCv50O5k/","description":"MySQL 遇到过死锁问题吗，你是如何解决的？ 查看死锁日志show engine innodb status; 找出死锁Sql 分析sql加锁情况 模拟死锁案发 分析死锁日志 分析死锁结果 悲观锁和乐观锁了解过吗，分别代表什么意思？ 悲观锁思想就是，当前线程要进来修改数据时，别的线程都得拒之门外~ 比如，可以使用sel\u0026hellip;","datePublished":"2023-02-17T14:19:08+08:00","dateModified":"2026-07-22T11:30:57+08:00","author":{"@type":"Person","name":"Bay`Blog"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"Bay`Blog"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://baoanyu.github.io","name":"Bay`Blog","position":1},{"@type":"ListItem","item":"https://baoanyu.github.io/post/ghCv50O5k/","name":"技术问题第一期MySQL（2023.2.17）","position":2}]}</script>
+<meta property="og:title" content="技术问题第一期MySQL（2023.2.17）">
+<meta property="og:description" content="MySQL 遇到过死锁问题吗，你是如何解决的？ 查看死锁日志show engine innodb status; 找出死锁Sql 分析sql加锁情况 模拟死锁案发 分析死锁日志 分析死锁结果 悲观锁和乐观锁了解过吗，分别代表什么意思？ 悲观锁思想就是，当前线程要进来修改数据时，别的线程都得拒之门外~ 比如，可以使用sel&amp;hellip;">
+<meta property="og:url" content="https://baoanyu.github.io/post/ghCv50O5k/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Bay`Blog">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://baoanyu.github.io/post/ghCv50O5k/">
+<meta name="twitter:title" content="技术问题第一期MySQL（2023.2.17）">
+<meta name="twitter:description" content="MySQL 遇到过死锁问题吗，你是如何解决的？ 查看死锁日志show engine innodb status; 找出死锁Sql 分析sql加锁情况 模拟死锁案发 分析死锁日志 分析死锁结果 悲观锁和乐观锁了解过吗，分别代表什么意思？ 悲观锁思想就是，当前线程要进来修改数据时，别的线程都得拒之门外~ 比如，可以使用sel&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+<body class="flavor-theme">
+
+  <header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <div class="top-bar">
+
+      
+      <div class="top-bar__left">
+        
+        <a href="https://baoanyu.github.io" class="site-avatar-link" aria-label="返回首页">
+          <img class="site-avatar" src="/images/avatar.png" alt="Bay`Blog" />
+        </a>
+        
+        <a href="https://baoanyu.github.io" class="site-name-link">Bay`Blog</a>
+      </div>
+
+      
+      <nav class="top-bar__nav" id="sectionBar">
+        
+        
+        <a class="nav-item" href="/">首页</a>
+        
+        <a class="nav-item" href="/post">博客</a>
+        
+        <a class="nav-item" href="/memos">闪念</a>
+        
+        <a class="nav-item" href="/archives">归档</a>
+        
+        <a class="nav-item" href="/tags">标签</a>
+        
+        <a class="nav-item" href="/links">友链</a>
+        
+        <a class="nav-item" href="/post/about">关于</a>
+        
+        
+      </nav>
+
+      
+      <div class="top-bar__right">
+        <button class="btn-icon btn-search search-btn" id="btnSearch" type="button" aria-label="搜索">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <button class="btn-icon theme-toggle theme-toggle-sun" id="themeToggleSun" type="button"
+          aria-label="切换到浅色模式">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 1C12.5523 1 13 1.44772 13 2V4C13 4.55228 12.5523 5 12 5C11.4477 5 11 4.55228 11 4V2C11 1.44772 11.4477 1 12 1Z"></path>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z"></path>
+            <path d="M13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20V22C11 22.5523 11.4477 23 12 23C12.5523 23 13 22.5523 13 22V20Z"></path>
+            <path d="M4.22282 4.22289C4.61335 3.83236 5.24651 3.83236 5.63704 4.22289L7.04704 5.63289C7.43756 6.02341 7.43756 6.65658 7.04704 7.0471C6.65651 7.43762 6.02335 7.43762 5.63283 7.0471L4.22282 5.6371C3.8323 5.24658 3.8323 4.61341 4.22282 4.22289Z"></path>
+            <path d="M18.367 16.9529C17.9765 16.5623 17.3433 16.5623 16.9528 16.9529C16.5623 17.3434 16.5623 17.9766 16.9528 18.3671L18.3628 19.7771C18.7533 20.1676 19.3865 20.1676 19.777 19.7771C20.1675 19.3866 20.1675 18.7534 19.777 18.3629L18.367 16.9529Z"></path>
+            <path d="M1 12C1 11.4477 1.44772 11 2 11H4C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13H2C1.44772 13 1 12.5523 1 12Z"></path>
+            <path d="M20 11C19.4477 11 19 11.4477 19 12C19 12.5523 19.4477 13 20 13H22C22.5523 13 23 12.5523 23 12C23 11.4477 22.5523 11 22 11H20Z"></path>
+            <path d="M7.04704 16.9529C7.43756 17.3434 7.43756 17.9766 7.04704 18.3671L5.63704 19.7771C5.24651 20.1676 4.61335 20.1676 4.22282 19.7771C3.8323 19.3866 3.8323 18.7534 4.22283 18.3629L5.63283 16.9529C6.02335 16.5623 6.65651 16.5623 7.04704 16.9529Z"></path>
+            <path d="M19.777 5.6371C20.1675 5.24657 20.1675 4.61341 19.777 4.22289C19.3865 3.83236 18.7533 3.83236 18.3628 4.22289L16.9528 5.63289C16.5623 6.02341 16.5623 6.65658 16.9528 7.0471C17.3433 7.43762 17.9765 7.43762 18.367 7.0471L19.777 5.6371Z"></path>
+          </svg>
+        </button>
+        <button class="btn-icon theme-toggle theme-toggle-moon" id="themeToggleMoon" type="button"
+          aria-label="切换到深色模式">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 11.5955 21.7564 11.2309 21.3827 11.0761C21.009 10.9213 20.5789 11.0069 20.2929 11.2929C19.287 12.2988 17.9226 12.864 16.5 12.864C15.0774 12.864 13.713 12.2988 12.7071 11.2929C11.7012 10.287 11.136 8.92261 11.136 7.5C11.136 6.07739 11.7012 4.71304 12.7071 3.70711C12.9931 3.42111 13.0787 2.99099 12.9239 2.61732C12.7691 2.24364 12.4045 2 12 2ZM7.55544 5.34824C8.27036 4.87055 9.05353 4.51389 9.87357 4.28778C9.39271 5.27979 9.13604 6.37666 9.13604 7.5C9.13604 9.45304 9.91189 11.3261 11.2929 12.7071C12.6739 14.0881 14.547 14.864 16.5 14.864C17.6233 14.864 18.7202 14.6073 19.7122 14.1264C19.4861 14.9465 19.1295 15.7296 18.6518 16.4446C17.7727 17.7602 16.5233 18.7855 15.0615 19.391C13.5997 19.9965 11.9911 20.155 10.4393 19.8463C8.88743 19.5376 7.46197 18.7757 6.34315 17.6569C5.21447 16.538 4.4624 15.1126 4.15372 13.5607C3.84504 12.0089 4.00347 10.4003 4.60897 8.93853C5.21447 7.47672 6.23985 6.22729 7.55544 5.34824Z"></path>
+            <path d="M19 2C19.5523 2 20 2.44772 20 3V4H21C21.5523 4 22 4.44772 22 5C22 5.55228 21.5523 6 21 6H20V7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V6H17C16.4477 6 16 5.55228 16 5C16 4.44772 16.4477 4 17 4H18V3C18 2.44772 18.4477 2 19 2Z"></path>
+          </svg>
+        </button>
+        <button class="btn-icon btn-nav-toggle mobile-only" id="btnNavToggle" type="button" aria-label="切换导航">
+          <div class="hamburger" id="hamburger">
+            <span class="hamburger__line hamburger__line--top"></span>
+            <span class="hamburger__line hamburger__line--bottom"></span>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<div class="header-spacer"></div>
+
+<script>
+(function(){
+  var btn = document.getElementById('btnNavToggle');
+  var nav = document.getElementById('sectionBar');
+  var hamburger = document.getElementById('hamburger');
+  if (btn && nav) {
+    btn.addEventListener('click', function(){
+      nav.classList.toggle('top-bar__nav--open');
+      if (hamburger) hamburger.classList.toggle('is-active');
+    });
+    nav.querySelectorAll('.nav-item').forEach(function(item){
+      item.addEventListener('click', function(){
+        nav.classList.remove('top-bar__nav--open');
+        if (hamburger) hamburger.classList.remove('is-active');
+      });
+    });
+  }
+
+  var root = document.documentElement;
+  var applyTheme = function(theme, persist){
+    if (theme === 'light') {
+      root.classList.add('theme-light');
+    } else {
+      root.classList.remove('theme-light');
+    }
+    if (persist) {
+      try { localStorage.setItem('flavor-theme', theme); } catch (e) {}
+    }
+  };
+  document.querySelectorAll('.theme-toggle').forEach(function(el){
+    el.addEventListener('click', function(){
+      applyTheme(root.classList.contains('theme-light') ? 'dark' : 'light', true);
+    });
+  });
+})();
+</script>
+
+  <main class="site-main" role="main">
+    
+<article class="article-container">
+  <header class="article-header">
+    <h1 class="article-title">技术问题第一期MySQL（2023.2.17）</h1>
+    <div class="article-meta">
+      
+      <span class="article-meta__item">2023-02-17</span>
+      
+      <span class="article-meta__sep">·</span>
+      <span class="article-meta__item">4 分钟阅读</span>
+      
+    </div>
+    
+    <div class="article-header__tags">
+      
+      <a href="/tag/mian-shi-wen-ti/" class="tag-pill tag-pill--sm">面试问题</a>
+      
+    </div>
+    
+  </header>
+
+  
+
+  <div class="article-content">
+    <h3 id="mysql-">MySQL 遇到过死锁问题吗，你是如何解决的？</h3>
+<ul>
+<li>查看死锁日志show    engine innodb status;</li>
+<li>找出死锁Sql</li>
+<li>分析sql加锁情况</li>
+<li>模拟死锁案发</li>
+<li>分析死锁日志</li>
+<li>分析死锁结果</li>
+</ul>
+<h3 id="heading">悲观锁和乐观锁了解过吗，分别代表什么意思？</h3>
+<ul>
+<li>
+<p>悲观锁思想就是，当前线程要进来修改数据时，别的线程都得拒之门外~ 比如，可以使用select…for update</p>
+<pre><code class="language-mysql">select * from User where name=‘jay’ for update
+</code></pre>
+<p>以上这条sql语句会锁定了User表中所有符合检索条件（name=‘jay’）的记录。本次事务提交之前，别的线程都无法修改这些记录。</p>
+</li>
+<li>
+<p>乐观锁思想就是，有线程过来，先放过去修改，如果看到别的线程没修改过，就可以修改成功，如果别的线程修改过，就修改失败或者重试。实现方式：乐观锁</p>
+</li>
+</ul>
+<h3 id="sql">如何写sql能够有效的使用到复合索引？</h3>
+<ul>
+<li>
+<p>复合索引，也叫组合索引，用户可以在多个列上建立索引,这种索引叫做复合索引。</p>
+<p>当我们创建一个组合索引的时候，如(k1,k2,k3)，相当于创建了（k1）、(k1,k2)和(k1,k2,k3)三个索引，这就是最左匹配原则。</p>
+<pre><code class="language-mysql">select * from table where k1=A AND k2=B AND k3=D
+</code></pre>
+<p>有关于复合索引，我们需要关注查询Sql条件的顺序，确保最左匹配原则有效，同时可以删除不必要的冗余索引。</p>
+</li>
+</ul>
+<h3 id="-crud">某个表千万数据 crud慢，如何优化</h3>
+<ul>
+<li>
+<p>可以考虑优化表结构，分表（水平分表，垂直分表</p>
+</li>
+<li>
+<p>分表方案（水平分表，垂直分表，切分规则hash等）</p>
+</li>
+<li>
+<p>分库分表中间件（Mycat，sharding-jdbc等）</p>
+</li>
+<li>
+<p>分库分表一些问题（事务问题？跨节点Join的问题）</p>
+</li>
+<li>
+<p>解决方案（分布式事务等）</p>
+</li>
+<li>
+<p>索引优化 除了分库分表，优化表结构，当然还有所以索引优化等方案</p>
+</li>
+</ul>
+<h3 id="mysqlin-exists">mysql中in 和exists的区别</h3>
+<ul>
+<li>exists查询的理解就是，先执行主查询，获得数据后，再放到子查询中做条件验证，根据验证结果（true或者false），来决定主查询的数据结果是否得意保留。</li>
+<li>in 先查询子查询 根据子查询的结果匹配主查询的条件</li>
+</ul>
+<h3 id="heading-1">数据库自增主键可能遇到什么问题？</h3>
+<ul>
+<li>主键重复，锁表，主键用完</li>
+</ul>
+<h3 id="heading-2">大表查询的优化方案</h3>
+<ul>
+<li>优化shema、sql语句+索引；</li>
+<li>可以考虑加缓存，memcached,     redis，或者JVM本地缓存；</li>
+<li>主从复制，读写分离；分库分表；</li>
+</ul>
+<h3 id="heading-3">什么是数据库连接池?为什么需要数据库连接池呢?</h3>
+<ul>
+<li>
+<p>连接池基本原理：数据库连接池原理：在内部对象池中，维护一定数量的数据库连接，并对外暴露数据库连接的获取和返回方法</p>
+<ul>
+<li>
+<h3 id="heading-4">应用程序和数据库建立连接的过程</h3>
+<ul>
+<li>通过TCP协议的三次握手和数据库服务器建立连接</li>
+<li>发送数据库用户账号密码，等待数据库验证用户身份</li>
+<li>完成身份验证后，系统可以提交SQL语句到数据库执行把连接关闭，TCP四次挥手告别。</li>
+</ul>
+</li>
+<li>
+<h3 id="heading-5">数据库连接池好处</h3>
+<ul>
+<li>资源重用 (连接复用)</li>
+<li>更快的系统响应速度</li>
+<li>新的资源分配手段 统一的连接管理，避免数据库连接泄漏</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="sql-1">一条sql执行过长的时间，你如何优化，从哪些方面入手？</h3>
+<ul>
+<li>查看是否涉及多表和子查询，优化Sql结构，如去除冗余字段，是否可拆表等</li>
+<li>优化索引结构，看是否可以适当添加索引</li>
+<li>数量大的表，可以考虑进行分离/分表（如交易流水表）</li>
+<li>数据库主从分离，读写分离</li>
+<li>explain分析sql语句，查看执行计划，优化sql</li>
+<li>查看mysql执行日志，分析是否有其他方面的问题</li>
+</ul>
+<h3 id="blobtext">Blob和text有什么区别？</h3>
+<ul>
+<li>Blob用于存储二进制数据，而Text用于存储大字符串。</li>
+<li>Blob值被视为二进制字符串（字节字符串）,它们没有字符集，并且排序和比较基于列值中的字节的数值。</li>
+<li>text值被视为非二进制字符串（字符字符串）。它们有一个字符集，并根据字符集的排序规则对值进行排序和比较。</li>
+</ul>
+<h3 id="hashb">hash索引和B+树区别是什么？你在设计索引是怎么抉择的？</h3>
+<ul>
+<li>B+树可以进行范围查询，Hash索引不能。</li>
+<li>B+树支持联合索引的最左侧原则，Hash索引不支持。</li>
+<li>B+树支持order by排序，Hash索引不支持。</li>
+<li>Hash索引在等值查询上比B+树效率更高。</li>
+<li>B+树使用like 进行模糊查询的时候，like后面（比如%开头）的话可以起到优化的作用，Hash索引根本无法进行模糊查询。</li>
+</ul>
+<h3 id="heading-6">什么是内连接、外连接、交叉连接、笛卡尔积呢？</h3>
+<ul>
+<li>内连接（inner     join）：取得两张表中满足存在连接匹配关系的记录。</li>
+<li>外连接（outer     join）：取得两张表中满足存在连接匹配关系的记录，以及某张表（或两张表）中不满足匹配关系的记录。</li>
+<li>交叉连接（cross     join）：显示两张表所有记录一一对应，没有匹配关系进行筛选，也被称为：笛卡尔积。</li>
+</ul>
+<h3 id="innodb">InnoDB内存结构包含四大核心组件</h3>
+<ul>
+<li>缓冲池(Buffer     Pool)，写缓冲(Change     Buffer)，</li>
+<li>自适应哈希索引(Adaptive     Hash Index)，日志缓冲(Log Buffer)</li>
+</ul>
+<h3 id="heading-7">索引有哪些优缺点？</h3>
+<ul>
+<li>优点
+<ul>
+<li>唯一索引可以保证数据库表中每一行的数据的唯一性</li>
+<li>索引可以加快数据查询速度，减少查询时间</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>创建索引和维护索引要耗费时间</li>
+<li>索引需要占物理空间，除了数据表占用数据空间之外，每一个索引还要占用一定的物理空间</li>
+<li>以表中的数据进行增、删、改的时候，索引也要动态的维护。</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-8">何时使用聚簇索引与非聚簇索引</h3>
+<p><img src="C:%5CUsers%5Calber%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230217141551645.png" alt="image-20230217141551645" /></p>
+
+  </div>
+
+  
+  <nav class="post-nav">
+    
+    <a href="/post/git-la-qu-dai-ma-ben-di-you-geng-xin-chong-tu-zen-me-ban/" class="post-nav-card post-nav-card--prev">
+      
+      <div class="post-nav-card__body">
+        <span class="post-nav-card__label meta-text">上一篇</span>
+        <span class="post-nav-card__title">Git拉取代码，本地有更新冲突怎么办</span>
+      </div>
+      <span class="post-nav-card__arrow">&larr;</span>
+    </a>
+    
+    
+    <a href="/post/LwP2-SWQ_/" class="post-nav-card post-nav-card--next">
+      <div class="post-nav-card__body">
+        <span class="post-nav-card__label meta-text">下一篇</span>
+        <span class="post-nav-card__title">工作总结（2023.2.17更新）</span>
+      </div>
+      
+      <span class="post-nav-card__arrow">&rarr;</span>
+    </a>
+    
+  </nav>
+
+  
+  
+
+
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+
+    
+    
+    <nav class="footer-nav" aria-label="页脚导航">
+      
+      <a class="footer-nav__link" href="/">首页</a>
+      
+      <a class="footer-nav__link" href="/post">博客</a>
+      
+      <a class="footer-nav__link" href="/memos">闪念</a>
+      
+      <a class="footer-nav__link" href="/archives">归档</a>
+      
+      <a class="footer-nav__link" href="/tags">标签</a>
+      
+      <a class="footer-nav__link" href="/links">友链</a>
+      
+      <a class="footer-nav__link" href="/post/about">关于</a>
+      
+    </nav>
+    
+
+    
+    <div class="footer-social">
+      
+      
+      
+      <a class="footer-social__link" href="/feed.xml" aria-label="RSS">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.18 15.64a2.18 2.18 0 110 4.36 2.18 2.18 0 010-4.36zM4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44zm0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/>
+        </svg>
+      </a>
+    </div>
+
+    
+    <div class="footer-copyright">
+      <p>&copy; 2026 Bay`Blog. All rights reserved.</p>
+    </div>
+
+    
+    
+    <div class="footer-custom">
+      Powered by Gridea Pro
+    </div>
+    
+
+    
+    <div class="footer-powered">
+      <span>Powered by <a href="https://gridea.pro" target="_blank" rel="noopener noreferrer">Gridea Pro</a></span>
+    </div>
+
+  </div>
+</footer>
+
+  
+  <div class="search-overlay" id="searchOverlay" style="display:none;">
+  <div class="search-modal">
+    <div class="search-header">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="搜索文章..." autocomplete="off" />
+      <span class="search-kbd">&#8984;K</span>
+      <button class="search-close" id="searchClose" type="button" aria-label="关闭搜索">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<script src="/scripts/search.js"></script>
+  
+
+  
+
+  
+
+  
+
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: flavor-theme v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>
